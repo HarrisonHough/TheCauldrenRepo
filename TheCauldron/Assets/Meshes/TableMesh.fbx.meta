@@ -1,16 +1,37 @@
 fileFormatVersion: 2
-guid: f00ecb7b2048d7140afd36df37906c12
-timeCreated: 1454070782
+guid: 6e22811b3b3c6b542abb24be4c9a82df
+timeCreated: 1454076637
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: pSphere1
-    4300002: CauldronMesh
+    100000: pCube3
+    100002: TableLeg
+    100004: TableLeg1
+    100006: TableLeg2
+    100008: TableLeg3
+    100010: //RootNode
+    400000: pCube3
+    400002: TableLeg
+    400004: TableLeg1
+    400006: TableLeg2
+    400008: TableLeg3
+    400010: //RootNode
+    2300000: pCube3
+    2300002: TableLeg
+    2300004: TableLeg1
+    2300006: TableLeg2
+    2300008: TableLeg3
+    3300000: pCube3
+    3300002: TableLeg
+    3300004: TableLeg1
+    3300006: TableLeg2
+    3300008: TableLeg3
+    4300000: pCube3
+    4300002: TableLeg
+    4300004: TableLeg2
+    4300006: TableLeg3
+    4300008: TableLeg1
     9500000: //RootNode
   materials:
     importMaterials: 1
