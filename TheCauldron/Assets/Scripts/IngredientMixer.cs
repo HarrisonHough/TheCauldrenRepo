@@ -12,6 +12,9 @@ public class IngredientMixer : MonoBehaviour {
   public string PigReceipe = "Ham,Cheese";
   public string RoastRecipe = "Pig,Apple";
 
+  // Particle Emitter
+  public Transform FlashySmoke;
+
 	// Use this for initialization
 	void Start () {
 
@@ -27,8 +30,11 @@ public class IngredientMixer : MonoBehaviour {
 	void Update () {
     if (Input.GetKeyDown(KeyCode.Space)) // FIXME: Just using spacebar to trigger for testing
     {
-      var newIngredient = MixIngredient();
-
+      // var newIngredient = MixIngredient();
+      var particleSystems = GetComponentsInChildren<ParticleSystem>();
+      foreach (ParticleSystem particles in particleSystems) {
+        particles.Play();
+      }
     }
 	}
 }
