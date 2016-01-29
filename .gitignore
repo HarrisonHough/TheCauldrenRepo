@@ -79,3 +79,5 @@ Thumbs.db
 # iOS project #
 # =========== #
 Assets/Builds/*
+TheCauldron/Assets/Builds.meta
+TheCauldron/Builds/
