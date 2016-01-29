@@ -74,3 +74,8 @@ obj/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# =========== #
+# iOS project #
+# =========== #
+Assets/Builds/*
