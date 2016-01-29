@@ -98,7 +98,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 477028, guid: 9a1d2989091a04043b8a776e20c37fa7, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.93
+      value: 0.878
       objectReference: {fileID: 0}
     - target: {fileID: 477028, guid: 9a1d2989091a04043b8a776e20c37fa7, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1739,7 +1739,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 151607760}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -1767,7 +1767,7 @@ MeshCollider:
   m_GameObject: {fileID: 151607760}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
@@ -4091,7 +4091,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1099560330}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -4119,7 +4119,7 @@ MeshCollider:
   m_GameObject: {fileID: 1099560330}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
@@ -4155,7 +4155,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 454736, guid: 0251e126ef0e84fcf8b9ea704e60f300, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.99
+      value: 0.881
       objectReference: {fileID: 0}
     - target: {fileID: 454736, guid: 0251e126ef0e84fcf8b9ea704e60f300, type: 2}
       propertyPath: m_LocalPosition.z
