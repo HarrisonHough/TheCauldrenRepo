@@ -19,9 +19,9 @@ public class IngredientMixer : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-    if (Input.GetKeyDown(KeyCode.Space)) // FIXME: Just using spacebar to trigger
-     {
-         var go = Instantiate(Pig, transform.position + new Vector3(0, 3, 0), transform.rotation);
-     }
+    if (Input.GetKeyDown(KeyCode.Space)) // FIXME: Just using spacebar to trigger for testing
+    {
+      var go = Instantiate(Pig, transform.position + new Vector3(0, 3, 0), transform.rotation);
+    }
 	}
 }
