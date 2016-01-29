@@ -17,11 +17,18 @@ public class IngredientMixer : MonoBehaviour {
 
 	}
 
+  Object MixIngredient () {
+    if (true) {// Array Contains required ingredient
+      return Instantiate(Pig, transform.position + new Vector3(0, 3, 0), transform.rotation);
+    }
+  }
+
 	// Update is called once per frame
 	void Update () {
     if (Input.GetKeyDown(KeyCode.Space)) // FIXME: Just using spacebar to trigger for testing
     {
-      var go = Instantiate(Pig, transform.position + new Vector3(0, 3, 0), transform.rotation);
+      var newIngredient = MixIngredient();
+
     }
 	}
 }
