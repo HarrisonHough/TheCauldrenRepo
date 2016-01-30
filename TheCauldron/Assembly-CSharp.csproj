@@ -45,6 +45,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Asset Store\Game Jam Menu Template\Scripts\DontDestroy.cs" />
+     <Compile Include="Assets\Asset Store\Game Jam Menu Template\Scripts\EventSystemChecker.cs" />
+     <Compile Include="Assets\Asset Store\Game Jam Menu Template\Scripts\Pause.cs" />
+     <Compile Include="Assets\Asset Store\Game Jam Menu Template\Scripts\PlayMusic.cs" />
+     <Compile Include="Assets\Asset Store\Game Jam Menu Template\Scripts\QuitApplication.cs" />
+     <Compile Include="Assets\Asset Store\Game Jam Menu Template\Scripts\SetAudioLevels.cs" />
+     <Compile Include="Assets\Asset Store\Game Jam Menu Template\Scripts\ShowPanels.cs" />
+     <Compile Include="Assets\Asset Store\Game Jam Menu Template\Scripts\StartOptions.cs" />
      <Compile Include="Assets\Cardboard\Legacy\Scripts\CardboardOnGUI.cs" />
      <Compile Include="Assets\Cardboard\Legacy\Scripts\CardboardOnGUIMouse.cs" />
      <Compile Include="Assets\Cardboard\Legacy\Scripts\CardboardOnGUIWindow.cs" />
@@ -104,15 +112,22 @@
      <Compile Include="Assets\Scripts\Ingredient.cs" />
      <Compile Include="Assets\Scripts\IngredientHit.cs" />
      <Compile Include="Assets\Scripts\IngredientMixer.cs" />
+     <Compile Include="Assets\Scripts\Menu.cs" />
+     <Compile Include="Assets\Scripts\MenuPotion.cs" />
      <None Include="Assets\Cardboard\Resources\SkyboxMesh.shader" />
      <None Include="Assets\Cardboard\Distortion\CardboardDistortion.cginc" />
+     <None Include="Assets\Asset Store\SimplePhysicalShader\SimplePhysicalShaderRetro.shader" />
      <None Include="Assets\Cardboard\Resources\UnlitTexture.shader" />
      <None Include="Assets\OVR\Moonlight\Shaders\OVRColorRampAlpha.shader" />
+     <None Include="Assets\Asset Store\SimplePhysicalShader\SimplePhysicalShader.shader" />
      <None Include="Assets\OVR\Moonlight\Shaders\Unlit Crosshair.shader" />
      <None Include="Assets\OVR\Moonlight\Resources\Unlit Transparent Color.shader" />
+     <None Include="Assets\Asset Store\Game Jam Menu Template\Fonts\OpenSans\License!.txt" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
+     <None Include="Assets\Asset Store\SimplePhysicalShader\SimplePhysicalShaderCoat.shader" />
      <None Include="Assets\Cardboard\Resources\UI\CardboardReticleShader.shader" />
      <None Include="Assets\Cardboard\Resources\SolidColor.shader" />
+     <None Include="Assets\Asset Store\Game Jam Menu Template\GameJamTemplateReadMe.txt" />
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
