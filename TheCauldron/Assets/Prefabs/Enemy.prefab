@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToPlayerForDeath: 1
-  player: {fileID: 126788, guid: 207a22a9b2048467fa9acdda4322c54d, type: 2}
+  player: {fileID: 142182, guid: 11eb092e0f68b492e8d6b1e5a993bb4b, type: 2}
   alive: 1
   speed: 0
 --- !u!136 &13692346
@@ -106,7 +106,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: player
       value: 
-      objectReference: {fileID: 126788, guid: 207a22a9b2048467fa9acdda4322c54d, type: 2}
+      objectReference: {fileID: 142182, guid: 11eb092e0f68b492e8d6b1e5a993bb4b, type: 2}
     - target: {fileID: 0}
       propertyPath: m_IsActive
       value: 1
