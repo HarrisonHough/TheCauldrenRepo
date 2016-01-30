@@ -1851,7 +1851,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 805e3b3571593bd4c8dcbb76c62f1ef9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.134
+      value: 1.155
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 805e3b3571593bd4c8dcbb76c62f1ef9, type: 3}
       propertyPath: m_LocalRotation.x
@@ -5079,7 +5079,7 @@ Transform:
   - {fileID: 757278234}
   - {fileID: 326723771}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
 --- !u!114 &1831175211
 MonoBehaviour:
   m_ObjectHideFlags: 0

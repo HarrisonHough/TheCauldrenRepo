@@ -119,6 +119,7 @@
     <Compile Include="Assets\OVR\Scripts\Util\OVRTrackerBounds.cs" />
     <Compile Include="Assets\Scripts\CardboardInteract.cs" />
     <Compile Include="Assets\Scripts\Ingredient.cs" />
+    <Compile Include="Assets\Scripts\IngredientHit.cs" />
     <Compile Include="Assets\Scripts\IngredientMixer.cs" />
   </ItemGroup>
   <ItemGroup>
