@@ -109,6 +109,11 @@
      <Compile Include="Assets\OVR\Scripts\Util\OVRScreenFade.cs" />
      <Compile Include="Assets\OVR\Scripts\Util\OVRTrackerBounds.cs" />
      <Compile Include="Assets\Scripts\CardboardInteract.cs" />
+<<<<<<< Updated upstream
+=======
+     <Compile Include="Assets\Scripts\Enemy.cs" />
+     <Compile Include="Assets\Scripts\EnemyLoader.cs" />
+>>>>>>> Stashed changes
      <Compile Include="Assets\Scripts\Ingredient.cs" />
      <Compile Include="Assets\Scripts\IngredientHit.cs" />
      <Compile Include="Assets\Scripts\IngredientMixer.cs" />
