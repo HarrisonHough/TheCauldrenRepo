@@ -42,11 +42,11 @@ public class CardboardInteract : MonoBehaviour {
 						timeInteracted = Time.time;
 					}
 				}
-
-				if (holdingItem && itemHeld != null) {
-					itemHeld.transform.position = Vector3.Lerp(itemHeld.transform.position, Camera.main.transform.position + Camera.main.transform.forward * distance, Time.deltaTime * smooth);
-				}
 			}
-		}
+
+			if (holdingItem && itemHeld != null) {
+				itemHeld.transform.position = Vector3.Lerp(itemHeld.transform.position, Camera.main.transform.position + Camera.main.transform.forward * distance, Time.deltaTime * smooth);
+			}
+		} // end of gameover
 	}
 }

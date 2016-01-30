@@ -3,17 +3,25 @@ using System.Collections;
 
 public class IngredientMixer : MonoBehaviour {
 
+  // Cauldron
+  public GameObject Soup;
+  public Material SoupMaterial;
+
   // Ingredient List
   public GameObject Ham;
+  public Color HamColorSoup;
   public GameObject Cheese;
+  public Color CheeseColorSoup;
   public GameObject Pig;
+  public Color PigColorSoup;
   public GameObject Eye;
+  public Color EyeColorSoup;
   public GameObject Potion;
+  public Color PotionColorSoup;
   public GameObject DragonClaw;
-
-  // Recipe for testing
-  public string PigReceipe = "Ham,Cheese";
-  public string RoastRecipe = "Pig,Apple";
+  public Color DragonClawColorSoup;
+  public GameObject Pizza;
+  public Color PizzaColorSoup;
 
   // Particle Emitter
   public Transform FlashySmoke;
