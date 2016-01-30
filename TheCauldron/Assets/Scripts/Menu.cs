@@ -4,6 +4,7 @@ using System.Collections;
 public class Menu : MonoBehaviour {
 
 	GameObject cauldron;
+	public GameObject paperMenu;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +18,7 @@ public class Menu : MonoBehaviour {
 		} else if (action.Equals("Options")) {
 			//options screen
 			Debug.Log("Options");
+			paperMenu.SetActive(true);
 		}
 	}
 	
