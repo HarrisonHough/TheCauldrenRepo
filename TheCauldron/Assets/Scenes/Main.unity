@@ -5974,7 +5974,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c6aa72ce75d544046af1530619d7dd4e, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: c6aa72ce75d544046af1530619d7dd4e, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -9041,7 +9041,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c6aa72ce75d544046af1530619d7dd4e, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: c6aa72ce75d544046af1530619d7dd4e, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -9689,7 +9689,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 79ef176b6ce3b9442a160401761da789, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 79ef176b6ce3b9442a160401761da789, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -13495,7 +13495,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c6aa72ce75d544046af1530619d7dd4e, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: c6aa72ce75d544046af1530619d7dd4e, type: 3}
       propertyPath: m_Materials.Array.data[0]
