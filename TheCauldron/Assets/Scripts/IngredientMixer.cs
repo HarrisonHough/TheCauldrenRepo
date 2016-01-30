@@ -7,6 +7,9 @@ public class IngredientMixer : MonoBehaviour {
   public GameObject Ham;
   public GameObject Cheese;
   public GameObject Pig;
+  public GameObject Eye;
+  public GameObject Potion;
+  public GameObject DragonClaw;
 
   // Recipe for testing
   public string PigReceipe = "Ham,Cheese";
@@ -31,10 +34,6 @@ public class IngredientMixer : MonoBehaviour {
 
   public void AddIngredient (string ingredient) {
     ingredients.Add(ingredient);
-    // Debug.Log("=====");
-    // foreach (string s in ingredients) {
-    //   Debug.Log(s.ToString());
-    // }
     Projectile = MixIngredient();
     if (Projectile) {
       Rigidbody rb = Projectile.GetComponent<Rigidbody>();
@@ -44,7 +43,14 @@ public class IngredientMixer : MonoBehaviour {
 
   GameObject MixIngredient () {
     if (ingredients.Contains("Ham") && ingredients.Contains("Cheese")) {// Array Contains required ingredient
+      ingredients.Remove("Ham");
+      ingredients.Remove("Cheese");
       return SpawnIngredient(Pig);
+    }
+    if (ingredients.Contains("Eye") && ingredients.Contains("Potion")) {
+      ingredients.Remove("Eye");
+      ingredients.Remove("Potion");
+      return SpawnIngredient(DragonClaw);
     }
     return null;
   }
@@ -56,7 +62,7 @@ public class IngredientMixer : MonoBehaviour {
       particles.Play();
     }
     ingredients.Clear();
-    return (GameObject) Instantiate(Pig, transform.position + new Vector3(0, 2, 0), transform.rotation * Quaternion.Euler(Random.Range(-10,10),0,0));
+    return (GameObject) Instantiate(ingredient, transform.position + new Vector3(0, 2, 0), transform.rotation * Quaternion.Euler(Random.Range(-10,10),0,0));
   }
 
   void GetClosestEnemy () {
