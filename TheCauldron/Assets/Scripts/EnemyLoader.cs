@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class EnemyLoader : MonoBehaviour {
-
-	private List<Enemy> enemies = new List<Enemy>();
+	
 	private float timeFromLastSpawn = -1;
 	private float timeToNextSpawn = -1;
 
@@ -20,7 +19,7 @@ public class EnemyLoader : MonoBehaviour {
 	void Update () {
 		if (Time.time >= timeFromLastSpawn + timeToNextSpawn) {
 			// spawn a new monster, regenerate the time to next spawn..
-			enemies.Add(Instantiate(enemyPrefab, this.transform.position, Quaternion.identity) as Enemy);
+			Instantiate(enemyPrefab, this.transform.position, Quaternion.identity);
 			GenerateTimeToNextSpawn();
 			timeFromLastSpawn = Time.time;
 		}
