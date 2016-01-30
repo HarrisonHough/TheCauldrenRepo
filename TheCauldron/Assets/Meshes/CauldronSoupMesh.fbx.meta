@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: f00ecb7b2048d7140afd36df37906c12
-timeCreated: 1454070782
+guid: d80040ec5d54cbd4cb6cd5537ad448cc
+timeCreated: 1454115361
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,8 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: pSphere1
-    4300002: CauldronMesh
+    4300000: CauldronSoupMesh
     9500000: //RootNode
   materials:
     importMaterials: 1
