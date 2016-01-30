@@ -11,17 +11,20 @@ public class Enemy : MonoBehaviour {
 	public float speed;
 
 	void Start() {
-		speed = GenerateSpeed(EnemyLoader.level);
+		speed = GenerateSpeed(GameManager.level);
 	}
 
 	// Update is called once per frame
 	public void Update () {
-		transform.LookAt(player.transform.position);
-		if (Vector3.Distance(player.transform.position, this.transform.position) >= distanceToPlayerForDeath) {
-			//Move towards the character..
-			transform.position += transform.forward * speed * Time.deltaTime;
-		} else {
-			//Game over or injury..
+		if (!GameManager.gameOver) {
+			transform.LookAt(player.transform.position);
+			if (Vector3.Distance(player.transform.position, this.transform.position) >= distanceToPlayerForDeath) {
+				//Move towards the character..
+				transform.position += transform.forward * speed * Time.deltaTime;
+			} else {
+				//Game over or injury..
+				GameManager.SetGameOver(false);
+			}
 		}
 	}
 

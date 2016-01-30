@@ -111,6 +111,7 @@
      <Compile Include="Assets\Scripts\CardboardInteract.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\EnemyLoader.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Ingredient.cs" />
      <Compile Include="Assets\Scripts\IngredientHit.cs" />
      <Compile Include="Assets\Scripts\IngredientMixer.cs" />
