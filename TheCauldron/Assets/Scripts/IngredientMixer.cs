@@ -12,7 +12,8 @@ public class IngredientMixer : MonoBehaviour {
   public GameObject DragonClaw;
 
   // Particle Emitter
-  public Transform FlashySmoke;
+  public ParticleSystem FlashySmoke;
+  public ParticleSystem MagicalSmoke;
 
   // DUMMY: Ingredient tracker
   private ArrayList ingredients;
@@ -30,6 +31,7 @@ public class IngredientMixer : MonoBehaviour {
   public void AddIngredient (string ingredient) {
     ingredients.Add(ingredient);
     Projectile = MixIngredient();
+    MagicalSmoke.Play();
     if (Projectile) {
       Rigidbody rb = Projectile.GetComponent<Rigidbody>();
       rb.isKinematic = false;
@@ -52,10 +54,8 @@ public class IngredientMixer : MonoBehaviour {
 
   GameObject SpawnIngredient (GameObject ingredient) {
     // Play cauldron flashy smoke effect
-    var particleSystems = GetComponentsInChildren<ParticleSystem>();
-    foreach (ParticleSystem particles in particleSystems) {
-      particles.Play();
-    }
+    FlashySmoke.Play();
+
     ingredients.Clear();
     return (GameObject) Instantiate(ingredient, transform.position + new Vector3(0, 1, 0), transform.rotation * Quaternion.Euler(Random.Range(-10,10),0,0));
   }
