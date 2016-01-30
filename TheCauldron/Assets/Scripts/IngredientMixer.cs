@@ -25,10 +25,10 @@ public class IngredientMixer : MonoBehaviour {
 
   public void AddIngredient (string ingredient) {
     ingredients.Add(ingredient);
-    Debug.Log("=====");
-    foreach (string s in ingredients) {
-      Debug.Log(s.ToString());
-    }
+    // Debug.Log("=====");
+    // foreach (string s in ingredients) {
+    //   Debug.Log(s.ToString());
+    // }
     GameObject obj = MixIngredient();
     if (obj) {
       obj.GetComponent<Rigidbody>().AddForce(new Vector3(100, Random.Range(200, 400), Random.Range(-200, 200)));
