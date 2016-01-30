@@ -22,6 +22,7 @@ public class CardboardInteract : MonoBehaviour {
 			RaycastHit hit;
 			if (Physics.Raycast(ray, out hit)) {
 				if (!holdingItem && Time.time > timeInteracted + 0.3f) {
+					
 					foreach (GameObject item in items) {
 						if (hit.collider.gameObject == item) {
 							holdingItem = true;
