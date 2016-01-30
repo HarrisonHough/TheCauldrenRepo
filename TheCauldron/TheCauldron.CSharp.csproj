@@ -132,6 +132,7 @@
     <Compile Include="Assets\OVR\Scripts\Util\OVRScreenFade.cs" />
     <Compile Include="Assets\OVR\Scripts\Util\OVRTrackerBounds.cs" />
     <Compile Include="Assets\Scripts\CardboardInteract.cs" />
+    <Compile Include="Assets\Scripts\DeadEnemy.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\EnemyLoader.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
