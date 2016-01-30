@@ -42,12 +42,16 @@ public class CardboardInteract : MonoBehaviour {
 							musicItemText.fontStyle = FontStyle.Italic;
 							musicItemText.color = new Color(28/255f, 28/255f, 28/255f, 90/255f); //1C1C1CFF
 							Debug.Log("disable");
+							GameObject.Find("Room").GetComponent<AudioSource>().mute = true;
+							//GameManager.musicEnabled(false);
 							//disable music
 						} else {
 							//enable..
 							musicItemText.fontStyle = FontStyle.Normal;
 							musicItemText.color = new Color(28/255f, 28/255f, 28/255f, 1); //1C1C1CFF
 							Debug.Log("enable");
+							GameObject.Find("Room").GetComponent<AudioSource>().mute = false;
+							//GameManager.musicEnabled(true);
 							//enable music..
 						}
 					} else if (hit.collider.gameObject == soundEffectsItemButton && Time.time > timeInteracted + 0.3f) {

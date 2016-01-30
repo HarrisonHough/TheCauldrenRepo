@@ -2391,7 +2391,7 @@ Transform:
   - {fileID: 1249814074}
   - {fileID: 1034515438}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 23
 --- !u!82 &355327814
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5471,7 +5471,7 @@ Transform:
   - {fileID: 566108441}
   - {fileID: 973300774}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
 --- !u!1001 &943383727
 Prefab:
   m_ObjectHideFlags: 0
@@ -5921,7 +5921,7 @@ Transform:
   m_Children:
   - {fileID: 1568776377}
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 28
 --- !u!1 &1099560330
 GameObject:
   m_ObjectHideFlags: 0
@@ -10182,6 +10182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 895539d00d19e449e83686b4601c8d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  room: {fileID: 355327812}
 --- !u!4 &1704223567 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: b887eff45f6b47b4f974a2d4aff0a7b4, type: 3}
@@ -10498,7 +10499,7 @@ Transform:
   - {fileID: 1017106077}
   - {fileID: 1564294865}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 24
 --- !u!1001 &1889800976
 Prefab:
   m_ObjectHideFlags: 0
@@ -10579,7 +10580,7 @@ Transform:
   - {fileID: 1183863941}
   - {fileID: 638199440}
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 29
 --- !u!4 &1918194794 stripped
 Transform:
   m_PrefabParentObject: {fileID: 441866, guid: d1925bdc097ee407f83ead48f1f11540, type: 2}

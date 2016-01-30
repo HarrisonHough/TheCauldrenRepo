@@ -5947,11 +5947,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1847135243}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 895539d00d19e449e83686b4601c8d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  room: {fileID: 1155287079}
 --- !u!1 &1849149834 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100008, guid: 6e22811b3b3c6b542abb24be4c9a82df, type: 3}
