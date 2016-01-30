@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IngredientName: Ham
-  Cauldron: {fileID: 100000, guid: f00ecb7b2048d7140afd36df37906c12, type: 3}
+  SoupColor: {r: 0.9632353, g: 0.76492214, b: 0.76492214, a: 0.822}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -109,6 +109,22 @@ Prefab:
       propertyPath: Cauldron
       value: 
       objectReference: {fileID: 100000, guid: f00ecb7b2048d7140afd36df37906c12, type: 3}
+    - target: {fileID: 0}
+      propertyPath: SoupColor.r
+      value: 0.9632353
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SoupColor.g
+      value: 0.76492214
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SoupColor.b
+      value: 0.76492214
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SoupColor.a
+      value: 0.822
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 103314}

@@ -2794,6 +2794,90 @@ Prefab:
       propertyPath: SoupMaterial
       value: 
       objectReference: {fileID: 2100000, guid: ccb81b47569d749b38194d294e4516d6, type: 2}
+    - target: {fileID: 11425014, guid: d1925bdc097ee407f83ead48f1f11540, type: 2}
+      propertyPath: HamColorSoup.r
+      value: 0.875
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425014, guid: d1925bdc097ee407f83ead48f1f11540, type: 2}
+      propertyPath: HamColorSoup.g
+      value: 0.7063894
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425014, guid: d1925bdc097ee407f83ead48f1f11540, type: 2}
+      propertyPath: HamColorSoup.b
+      value: 0.55330884
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425014, guid: d1925bdc097ee407f83ead48f1f11540, type: 2}
+      propertyPath: CheeseColorSoup.r
+      value: 0.9264706
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425014, guid: d1925bdc097ee407f83ead48f1f11540, type: 2}
+      propertyPath: CheeseColorSoup.g
+      value: 0.86445534
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425014, guid: d1925bdc097ee407f83ead48f1f11540, type: 2}
+      propertyPath: CheeseColorSoup.b
+      value: 0.5177336
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425014, guid: d1925bdc097ee407f83ead48f1f11540, type: 2}
+      propertyPath: PigColorSoup.r
+      value: 0.9705882
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425014, guid: d1925bdc097ee407f83ead48f1f11540, type: 2}
+      propertyPath: PigColorSoup.g
+      value: 0.56379753
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425014, guid: d1925bdc097ee407f83ead48f1f11540, type: 2}
+      propertyPath: PigColorSoup.b
+      value: 0.72370845
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425014, guid: d1925bdc097ee407f83ead48f1f11540, type: 2}
+      propertyPath: EyeColorSoup.r
+      value: 0.6320769
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425014, guid: d1925bdc097ee407f83ead48f1f11540, type: 2}
+      propertyPath: EyeColorSoup.g
+      value: 0.24037626
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425014, guid: d1925bdc097ee407f83ead48f1f11540, type: 2}
+      propertyPath: EyeColorSoup.b
+      value: 0.83823526
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425014, guid: d1925bdc097ee407f83ead48f1f11540, type: 2}
+      propertyPath: PotionColorSoup.r
+      value: 0.89705884
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425014, guid: d1925bdc097ee407f83ead48f1f11540, type: 2}
+      propertyPath: PotionColorSoup.g
+      value: 0.3027801
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425014, guid: d1925bdc097ee407f83ead48f1f11540, type: 2}
+      propertyPath: PotionColorSoup.b
+      value: 0.29022494
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425014, guid: d1925bdc097ee407f83ead48f1f11540, type: 2}
+      propertyPath: DragonClawColorSoup.r
+      value: 0.44688582
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425014, guid: d1925bdc097ee407f83ead48f1f11540, type: 2}
+      propertyPath: DragonClawColorSoup.g
+      value: 0.9264706
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425014, guid: d1925bdc097ee407f83ead48f1f11540, type: 2}
+      propertyPath: DragonClawColorSoup.b
+      value: 0.3269896
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425014, guid: d1925bdc097ee407f83ead48f1f11540, type: 2}
+      propertyPath: PizzaColorSoup.r
+      value: 0.38367143
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425014, guid: d1925bdc097ee407f83ead48f1f11540, type: 2}
+      propertyPath: PizzaColorSoup.g
+      value: 0.13235293
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425014, guid: d1925bdc097ee407f83ead48f1f11540, type: 2}
+      propertyPath: PizzaColorSoup.b
+      value: 0.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d1925bdc097ee407f83ead48f1f11540, type: 2}
   m_IsPrefabParent: 0
@@ -5282,7 +5366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e48dc3c57d441c1945bc25e670d845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 147730, guid: 91b89c636754e4ffcb174ecdc56279a9, type: 2}
+  enemyPrefab: {fileID: 0}
 --- !u!1 &1621902227
 GameObject:
   m_ObjectHideFlags: 0
@@ -5661,6 +5745,7 @@ GameObject:
   - 4: {fileID: 1998392323}
   - 33: {fileID: 1998392326}
   - 23: {fileID: 1998392324}
+  - 114: {fileID: 1998392327}
   m_Layer: 0
   m_Name: Soup
   m_TagString: Untagged
@@ -5713,6 +5798,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1998392322}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1998392327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1998392322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22e639e2ff16a4a1da3d5bb4c76a207f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NextColor: {r: 0, g: 0, b: 0, a: 0}
+  SoupMaterial: {fileID: 2100000, guid: ccb81b47569d749b38194d294e4516d6, type: 2}
+  Smoke: {fileID: 1099560332}
 --- !u!4 &2004783463 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: b887eff45f6b47b4f974a2d4aff0a7b4, type: 3}

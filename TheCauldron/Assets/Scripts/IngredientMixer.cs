@@ -7,21 +7,9 @@ public class IngredientMixer : MonoBehaviour {
   public GameObject Soup;
   public Material SoupMaterial;
 
-  // Ingredient List
-  public GameObject Ham;
-  public Color HamColorSoup;
-  public GameObject Cheese;
-  public Color CheeseColorSoup;
+  // Combinable item
   public GameObject Pig;
-  public Color PigColorSoup;
-  public GameObject Eye;
-  public Color EyeColorSoup;
-  public GameObject Potion;
-  public Color PotionColorSoup;
   public GameObject DragonClaw;
-  public Color DragonClawColorSoup;
-  public GameObject Pizza;
-  public Color PizzaColorSoup;
 
   // Particle Emitter
   public Transform FlashySmoke;

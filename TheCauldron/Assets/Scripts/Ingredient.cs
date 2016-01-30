@@ -4,12 +4,15 @@ using System.Collections;
 public class Ingredient : MonoBehaviour {
 
   public string IngredientName;
+  public Color SoupColor;
 
   private GameObject cauldron;
+  private GameObject soup;
 
 	// Use this for initialization
 	void Start () {
     cauldron = GameObject.Find("Cauldron");
+    soup = GameObject.Find("Soup");
 	}
 
   void OnTriggerEnter(Collider other) {
@@ -21,6 +24,7 @@ public class Ingredient : MonoBehaviour {
 			}
     } else if (other.gameObject.tag == "IngredientHit") {
       cauldron.GetComponent<IngredientMixer>().AddIngredient(IngredientName);
+      soup.GetComponent<SoupColor>().NextColor = SoupColor;
       Destroy(gameObject);
     }
 
