@@ -11,6 +11,7 @@ public class CardboardInteract : MonoBehaviour {
 	float timeInteracted;
 	float distance = 1;
 	float smooth = 4;
+	float turnspeed = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -45,7 +46,11 @@ public class CardboardInteract : MonoBehaviour {
 			}
 
 			if (holdingItem && itemHeld != null) {
-				itemHeld.transform.position = Vector3.Lerp(itemHeld.transform.position, Camera.main.transform.position + Camera.main.transform.forward * distance, Time.deltaTime * smooth);
+				Vector3 frontOfCamera = Camera.main.transform.position + Camera.main.transform.forward * distance;
+				Vector3 diffVector = frontOfCamera - itemHeld.transform.position;
+				float diff = diffVector.magnitude;
+				itemHeld.transform.position = Vector3.Lerp(itemHeld.transform.position, frontOfCamera, Time.deltaTime * smooth);
+				itemHeld.transform.rotation *= Quaternion.Euler(Random.Range(5,10) * diff * (diffVector.z/Mathf.Abs(diffVector.z)), 0, 0);
 			}
 		} // end of gameover
 	}

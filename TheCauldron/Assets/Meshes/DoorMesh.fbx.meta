@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: 434a73d85888a4bae956b69d3ba47700
-timeCreated: 1454145952
+guid: 34815dc6da798ac4a8772c74bf799d80
+timeCreated: 1454150870
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: DoorMesh
+    100000: DoorMesh
+    100002: //RootNode
     100004: DoorwayMesh1
     100006: DoorwayMesh2
     100008: DoorwayMesh3
-    400000: //RootNode
-    400002: DoorMesh
+    400000: DoorMesh
+    400002: //RootNode
     400004: DoorwayMesh1
     400006: DoorwayMesh2
     400008: DoorwayMesh3

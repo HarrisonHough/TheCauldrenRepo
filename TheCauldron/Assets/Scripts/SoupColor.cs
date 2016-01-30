@@ -29,7 +29,7 @@ public class SoupColor : MonoBehaviour {
       Color c = Color.Lerp(LastColor, NextColor, timer / duration);
       SoupMaterial.color = c;
       SoupLight.color = c;
-      SoupLight.intensity = 2;
+      SoupLight.intensity = Mathf.Max(duration - timer, 1);
 
       var col = Smoke.colorOverLifetime;
       col.enabled = true;
@@ -41,7 +41,7 @@ public class SoupColor : MonoBehaviour {
 
       if (timer >= duration) {
         SoupMaterial.color = NextColor;
-        SoupLight.intensity = 0;
+        SoupLight.intensity = 1;
         timer = 0;
       }
     }

@@ -34,7 +34,7 @@ public class Ingredient : MonoBehaviour {
     Vector3 direction = target - transform.position;
     direction.Normalize();
     Debug.Log(direction.ToString());
-    GetComponent<Rigidbody>().AddForce(direction * 700);
+    GetComponent<Rigidbody>().AddForce(direction * 500);
   }
 
 	// Update is called once per frame

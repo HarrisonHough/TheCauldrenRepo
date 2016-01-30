@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: b887eff45f6b47b4f974a2d4aff0a7b4
-timeCreated: 1454117571
+timeCreated: 1454151087
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -11,6 +11,7 @@ ModelImporter:
     3300000: //RootNode
     4300000: pCylinder2
     4300002: WoodMesh1
+    4300004: WallMesh1
     9500000: //RootNode
   materials:
     importMaterials: 1
