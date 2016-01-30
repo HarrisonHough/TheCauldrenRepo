@@ -116,6 +116,7 @@
      <Compile Include="Assets\Scripts\Ingredient.cs" />
      <Compile Include="Assets\Scripts\IngredientHit.cs" />
      <Compile Include="Assets\Scripts\IngredientMixer.cs" />
+     <Compile Include="Assets\Scripts\InventoryLoader.cs" />
      <Compile Include="Assets\Scripts\Menu.cs" />
      <Compile Include="Assets\Scripts\MenuPotion.cs" />
      <Compile Include="Assets\Scripts\SoupColor.cs" />
