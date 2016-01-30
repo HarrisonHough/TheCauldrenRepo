@@ -29,21 +29,27 @@ public class IngredientMixer : MonoBehaviour {
     foreach (string s in ingredients) {
       Debug.Log(s.ToString());
     }
-    MixIngredient();
+    GameObject obj = MixIngredient();
+    if (obj) {
+      obj.GetComponent<Rigidbody>().AddForce(new Vector3(100, Random.Range(200, 400), Random.Range(-200, 200)));
+    }
   }
 
   GameObject MixIngredient () {
     if (ingredients.Contains("Ham") && ingredients.Contains("Cheese")) {// Array Contains required ingredient
-
-      // Play cauldron flashy smoke effect
-      var particleSystems = GetComponentsInChildren<ParticleSystem>();
-      foreach (ParticleSystem particles in particleSystems) {
-        particles.Play();
-      }
-      ingredients.Clear();
-      return (GameObject) Instantiate(Pig, transform.position + new Vector3(0, 4, 0), transform.rotation * Quaternion.Euler(Random.Range(-10,10),0,0));
+      return SpawnIngredient(Pig);
     }
     return null;
+  }
+
+  GameObject SpawnIngredient (GameObject ingredient) {
+    // Play cauldron flashy smoke effect
+    var particleSystems = GetComponentsInChildren<ParticleSystem>();
+    foreach (ParticleSystem particles in particleSystems) {
+      particles.Play();
+    }
+    ingredients.Clear();
+    return (GameObject) Instantiate(Pig, transform.position + new Vector3(0, 1.5f, 0), transform.rotation * Quaternion.Euler(Random.Range(-10,10),0,0));
   }
 
 	// Update is called once per frame
@@ -52,7 +58,7 @@ public class IngredientMixer : MonoBehaviour {
     {
       GameObject obj = MixIngredient();
       if (obj) {
-        obj.GetComponent<Rigidbody>().AddForce(new Vector3(100, Random.Range(340, 500), Random.Range(-100, 100)));
+        obj.GetComponent<Rigidbody>().AddForce(new Vector3(200, Random.Range(100, 300), Random.Range(-200, 200)));
       }
     }
 	}
