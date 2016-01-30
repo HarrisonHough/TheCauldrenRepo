@@ -95,7 +95,7 @@ PlayerSettings:
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   xboxOneDisableKinectGpuReservation: 0
-  virtualRealitySupported: 0
+  virtualRealitySupported: 1
   productGUID: 59d9b61cdf0db43ff8c2b6355b4a2000
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 9

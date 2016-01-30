@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.VR;
 
 public class CardboardInteract : MonoBehaviour {
 
+	public bool CardboardEnabled;
 	GameObject[] items;
 	bool holdingItem;
 	GameObject itemHeld;
@@ -14,15 +16,16 @@ public class CardboardInteract : MonoBehaviour {
 	void Start () {
 		items = GameObject.FindGameObjectsWithTag("Item");
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		if (Cardboard.SDK.Triggered || Input.GetMouseButtonUp(0)) {
+
+		if ((VRDevice.family != "oculus" && Cardboard.SDK.Triggered) || Input.GetMouseButtonUp(0)) {
 			Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 			RaycastHit hit;
 			if (Physics.Raycast(ray, out hit)) {
 				if (!holdingItem && Time.time > timeInteracted + 0.3f) {
-					
+
 					foreach (GameObject item in items) {
 						if (hit.collider.gameObject == item) {
 							holdingItem = true;
