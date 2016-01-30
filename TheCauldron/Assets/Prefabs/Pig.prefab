@@ -13,6 +13,7 @@ GameObject:
   - 95: {fileID: 9559790}
   - 54: {fileID: 5488068}
   - 64: {fileID: 6450726}
+  - 114: {fileID: 11422366}
   m_Layer: 0
   m_Name: Pig
   m_TagString: Item
@@ -109,6 +110,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11422366
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8558d3184fb9742b599f19a7faa99e7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IngredientName: Pig
+  Cauldron: {fileID: 100000, guid: f00ecb7b2048d7140afd36df37906c12, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -140,6 +154,14 @@ Prefab:
       propertyPath: m_Convex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: IngredientName
+      value: Pig
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Cauldron
+      value: 
+      objectReference: {fileID: 100000, guid: f00ecb7b2048d7140afd36df37906c12, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 144804}

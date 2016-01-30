@@ -23,11 +23,16 @@ public class IngredientMixer : MonoBehaviour {
     ingredients = new ArrayList();
 	}
 
-  GameObject MixIngredient () {
+  public void AddIngredient (string ingredient) {
+    ingredients.Add(ingredient);
+    Debug.Log("=====");
+    foreach (string s in ingredients) {
+      Debug.Log(s.ToString());
+    }
+    MixIngredient();
+  }
 
-    // DUMMY: Ingredient
-    ingredients.Add("Ham");
-    ingredients.Add("Cheese");
+  GameObject MixIngredient () {
     if (ingredients.Contains("Ham") && ingredients.Contains("Cheese")) {// Array Contains required ingredient
 
       // Play cauldron flashy smoke effect
@@ -36,7 +41,7 @@ public class IngredientMixer : MonoBehaviour {
         particles.Play();
       }
       ingredients.Clear();
-      return (GameObject) Instantiate(Pig, transform.position + new Vector3(0, 1, 0), transform.rotation * Quaternion.Euler(Random.Range(-10,10),0,0));
+      return (GameObject) Instantiate(Pig, transform.position + new Vector3(0, 4, 0), transform.rotation * Quaternion.Euler(Random.Range(-10,10),0,0));
     }
     return null;
   }
@@ -47,7 +52,7 @@ public class IngredientMixer : MonoBehaviour {
     {
       GameObject obj = MixIngredient();
       if (obj) {
-        obj.GetComponent<Rigidbody>().AddForce(new Vector3(100, Random.Range(200, 400), Random.Range(-100, 100)));
+        obj.GetComponent<Rigidbody>().AddForce(new Vector3(100, Random.Range(340, 500), Random.Range(-100, 100)));
       }
     }
 	}
