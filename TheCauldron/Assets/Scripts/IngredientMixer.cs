@@ -4,9 +4,9 @@ using System.Collections;
 public class IngredientMixer : MonoBehaviour {
 
   // Ingredient List
-  public Transform Ham;
-  public Transform Cheese;
-  public Transform Pig;
+  public GameObject Ham;
+  public GameObject Cheese;
+  public GameObject Pig;
 
   // Recipe for testing
   public string PigReceipe = "Ham,Cheese";
@@ -15,7 +15,7 @@ public class IngredientMixer : MonoBehaviour {
   // Particle Emitter
   public Transform FlashySmoke;
 
-  // FIXME: Ingredient tracker
+  // DUMMY: Ingredient tracker
   private ArrayList ingredients;
 
 	// Use this for initialization
@@ -23,10 +23,11 @@ public class IngredientMixer : MonoBehaviour {
     ingredients = new ArrayList();
 	}
 
-  Object MixIngredient () {
+  GameObject MixIngredient () {
+
+    // DUMMY: Ingredient
     ingredients.Add("Ham");
     ingredients.Add("Cheese");
-    Debug.Log(ingredients);
     if (ingredients.Contains("Ham") && ingredients.Contains("Cheese")) {// Array Contains required ingredient
 
       // Play cauldron flashy smoke effect
@@ -35,17 +36,19 @@ public class IngredientMixer : MonoBehaviour {
         particles.Play();
       }
       ingredients.Clear();
-      return Instantiate(Pig, transform.position + new Vector3(0, 1, 0), transform.rotation);
-
+      return (GameObject) Instantiate(Pig, transform.position + new Vector3(0, 1, 0), transform.rotation);
     }
     return null;
   }
 
 	// Update is called once per frame
 	void Update () {
-    if (Input.GetKeyDown(KeyCode.Space)) // FIXME: Just using spacebar to trigger for testing
+    if (Input.GetKeyDown(KeyCode.Space)) // DUMMY: Just using spacebar to trigger for testing
     {
-      var newIngredient = MixIngredient();
+      GameObject obj = MixIngredient();
+      if (obj) {
+        obj.GetComponent<Rigidbody>().AddForce(transform.up * -10);
+      }
     }
 	}
 }
