@@ -7,11 +7,21 @@ public class Enemy : MonoBehaviour {
 	//public float speed = 2f;
 	public float distanceToPlayerForDeath = 1f;
 	public GameObject player;
+	public GameObject DeadEnemyPrefab;
 	public bool alive = true;
 	public float speed;
 
 	void Start() {
 		speed = GenerateSpeed(GameManager.level);
+	}
+
+	public void OnHit () {
+    Instantiate(DeadEnemyPrefab, transform.position, transform.rotation);
+    if (EnemyLoader.enemiesToSpawnThisLevel <= 0 && GameObject.FindGameObjectsWithTag("Enemy").Length <= 0) {
+      //you won!
+      GameManager.SetGameOver(true);
+    }
+    Destroy(gameObject);
 	}
 
 	// Update is called once per frame

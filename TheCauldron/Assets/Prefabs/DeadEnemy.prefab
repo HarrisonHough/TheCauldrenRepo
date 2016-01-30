@@ -10,11 +10,10 @@ GameObject:
   - 4: {fileID: 402562}
   - 33: {fileID: 3347506}
   - 23: {fileID: 2340204}
-  - 114: {fileID: 11438086}
-  - 136: {fileID: 13692346}
+  - 114: {fileID: 11477644}
   m_Layer: 0
-  m_Name: Enemy
-  m_TagString: Enemy
+  m_Name: DeadEnemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,10 +37,10 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147730}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: cb3fbdbfdf58b0f429c2897cda79de2f, type: 2}
+  - {fileID: 2100000, guid: e5613d978821e4317aa5bae295736862, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -64,7 +63,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147730}
   m_Mesh: {fileID: 4300000, guid: cccc20b65c937465aa0108fb66da33bf, type: 3}
---- !u!114 &11438086
+--- !u!114 &11477644
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -72,27 +71,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 147730}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce9e3b5d25495499d9708359119776dc, type: 3}
+  m_Script: {fileID: 11500000, guid: c720e7e3676404e5fb212cfed46326b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToPlayerForDeath: 1
-  player: {fileID: 142182, guid: 11eb092e0f68b492e8d6b1e5a993bb4b, type: 2}
-  DeadEnemyPrefab: {fileID: 147730, guid: a06ef5b591b834887875528a94860f6c, type: 2}
-  alive: 1
-  speed: 0
---- !u!136 &13692346
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 147730}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 83.55473
-  m_Height: 269.75964
-  m_Direction: 1
-  m_Center: {x: 3.720211, y: 130.89334, z: -0.5946808}
+  SecondsToDisappear: 1
+  DeadEnemyMaterial: {fileID: 2100000, guid: e5613d978821e4317aa5bae295736862, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -114,11 +97,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TagString
-      value: Enemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalRotation.y
@@ -133,9 +116,21 @@ Prefab:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: DeadEnemyPrefab
+      propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 147730, guid: a06ef5b591b834887875528a94860f6c, type: 2}
+      objectReference: {fileID: 2100000, guid: e5613d978821e4317aa5bae295736862, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: DeadEnemyMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: e5613d978821e4317aa5bae295736862, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 147730}

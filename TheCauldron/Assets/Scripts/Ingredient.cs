@@ -16,18 +16,15 @@ public class Ingredient : MonoBehaviour {
 	}
 
   void OnTriggerEnter(Collider other) {
-    if (other.gameObject.tag == "Enemy") {
-      Destroy(other.gameObject);
-			if (EnemyLoader.enemiesToSpawnThisLevel <= 0 && GameObject.FindGameObjectsWithTag("Enemy").Length <= 0) {
-				//you won!
-				GameManager.SetGameOver(true);
-			}
-    } else if (other.gameObject.tag == "IngredientHit") {
-      cauldron.GetComponent<IngredientMixer>().AddIngredient(IngredientName);
-      soup.GetComponent<SoupColor>().NextColor = SoupColor;
-      Destroy(gameObject);
+    if (!GameManager.gameOver) {
+      if (other.gameObject.tag == "IngredientHit") {
+        cauldron.GetComponent<IngredientMixer>().AddIngredient(IngredientName);
+        soup.GetComponent<SoupColor>().NextColor = SoupColor;
+        Destroy(gameObject);
+      } else if (other.gameObject.tag == "Enemy") {
+        other.gameObject.GetComponent<Enemy>().OnHit();
+      }
     }
-
   }
 
   public void FlyTo(Vector3 target) {
