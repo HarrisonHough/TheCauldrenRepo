@@ -28,7 +28,7 @@ public class CardboardInteract : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		if (GameObject.Find("PaperMenu") != null) {
+		if (GameObject.Find("PaperMenu") != null && !holdingItem) {
 			if ((VRDevice.family != "oculus" && Cardboard.SDK.Triggered) || Input.GetMouseButtonUp(0)) {
 				Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 				RaycastHit hit;
