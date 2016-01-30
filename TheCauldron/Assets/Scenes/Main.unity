@@ -2012,7 +2012,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 459256, guid: 02b4d5daac58b4feea3841a634c71231, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0.07505947
+      value: 0.054
       objectReference: {fileID: 0}
     - target: {fileID: 459256, guid: 02b4d5daac58b4feea3841a634c71231, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2049,6 +2049,14 @@ Prefab:
     - target: {fileID: 459256, guid: 02b4d5daac58b4feea3841a634c71231, type: 2}
       propertyPath: m_LocalScale.y
       value: 0.00022344234
+      objectReference: {fileID: 0}
+    - target: {fileID: 5499624, guid: 02b4d5daac58b4feea3841a634c71231, type: 2}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5499624, guid: 02b4d5daac58b4feea3841a634c71231, type: 2}
+      propertyPath: m_UseGravity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9541790, guid: 02b4d5daac58b4feea3841a634c71231, type: 2}
@@ -3586,7 +3594,7 @@ Transform:
   m_Children:
   - {fileID: 1568776377}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!1 &1099560330
 GameObject:
   m_ObjectHideFlags: 0

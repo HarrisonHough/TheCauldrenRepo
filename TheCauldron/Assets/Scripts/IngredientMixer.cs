@@ -24,7 +24,6 @@ public class IngredientMixer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
     ingredients = new ArrayList();
-    waitProjectile = 1.0f;
     Projectile = null;
 	}
 
@@ -58,7 +57,7 @@ public class IngredientMixer : MonoBehaviour {
       particles.Play();
     }
     ingredients.Clear();
-    return (GameObject) Instantiate(ingredient, transform.position + new Vector3(0, 2, 0), transform.rotation * Quaternion.Euler(Random.Range(-10,10),0,0));
+    return (GameObject) Instantiate(ingredient, transform.position + new Vector3(0, 1, 0), transform.rotation * Quaternion.Euler(Random.Range(-10,10),0,0));
   }
 
   void GetClosestEnemy () {
@@ -73,14 +72,16 @@ public class IngredientMixer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
     GetClosestEnemy();
+    Vector3 targetPos;
+    if (!Target) {
+      targetPos = transform.position;
+    } else {
+      targetPos = Target.transform.position;
+    }
 
-    if (waitProjectile > 0 && Projectile && Target) {
-      waitProjectile -= Time.deltaTime;
-      if (waitProjectile >= 0) {
-        Projectile.GetComponent<Ingredient>().FlyTo(Target.transform.position);
-        waitProjectile = 1.0f;
-        Projectile = null;
-      }
+    if (Projectile && Target) {
+      Projectile.GetComponent<Ingredient>().FlyTo(targetPos + new Vector3(0, 3, 0));
+      Projectile = null;
     }
     if (Input.GetKeyDown(KeyCode.Space)) // DUMMY: Just using spacebar to trigger for testing
     {
