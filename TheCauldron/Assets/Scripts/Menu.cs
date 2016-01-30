@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour {
 
@@ -15,6 +16,7 @@ public class Menu : MonoBehaviour {
 		if (action.Equals("Play")) {
 			//play screen
 			Debug.Log("Play game!");
+			SceneManager.LoadScene("Main");
 		} else if (action.Equals("Options")) {
 			//options screen
 			Debug.Log("Options");
