@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Item
   - IngredientHit
+  - Enemy
   layers:
   - Default
   - TransparentFX

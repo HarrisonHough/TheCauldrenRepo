@@ -13,8 +13,13 @@ public class Ingredient : MonoBehaviour {
 	}
 
   void OnTriggerEnter(Collider other) {
-    cauldron.GetComponent<IngredientMixer>().AddIngredient(IngredientName);
-    Destroy(gameObject);
+    if (other.gameObject.tag == "Enemy") {
+      Destroy(other.gameObject);
+    } else if (other.gameObject.tag == "IngredientHit") {
+      cauldron.GetComponent<IngredientMixer>().AddIngredient(IngredientName);
+      Destroy(gameObject);
+    }
+
   }
 
   public void FlyTo(Vector3 target) {

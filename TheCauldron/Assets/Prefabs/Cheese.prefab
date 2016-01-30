@@ -12,8 +12,8 @@ GameObject:
   - 23: {fileID: 2357594}
   - 95: {fileID: 9567852}
   - 114: {fileID: 11437290}
-  - 54: {fileID: 5493376}
   - 64: {fileID: 6401120}
+  - 54: {fileID: 5406290}
   m_Layer: 0
   m_Name: Cheese
   m_TagString: Item
@@ -66,7 +66,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151524}
   m_Mesh: {fileID: 4300000, guid: 805e3b3571593bd4c8dcbb76c62f1ef9, type: 3}
---- !u!54 &5493376
+--- !u!54 &5406290
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -77,7 +77,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -91,7 +91,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
+  m_Convex: 1
   m_Mesh: {fileID: 4300000, guid: 805e3b3571593bd4c8dcbb76c62f1ef9, type: 3}
 --- !u!95 &9567852
 Animator:
@@ -136,6 +136,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: Item
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Convex
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -19,7 +19,7 @@ public class IngredientMixer : MonoBehaviour {
   private ArrayList ingredients;
 
   private GameObject Projectile;
-  public GameObject Target;
+  private GameObject Target;
   private float waitProjectile;
 
 	// Use this for initialization
@@ -37,7 +37,8 @@ public class IngredientMixer : MonoBehaviour {
     // }
     Projectile = MixIngredient();
     if (Projectile) {
-      Projectile.GetComponent<Rigidbody>().AddForce(new Vector3(100, Random.Range(200, 400), Random.Range(-200, 200)));
+      Rigidbody rb = Projectile.GetComponent<Rigidbody>();
+      rb.isKinematic = false;
     }
   }
 
@@ -55,12 +56,22 @@ public class IngredientMixer : MonoBehaviour {
       particles.Play();
     }
     ingredients.Clear();
-    return (GameObject) Instantiate(Pig, transform.position + new Vector3(0, 1.5f, 0), transform.rotation * Quaternion.Euler(Random.Range(-10,10),0,0));
+    return (GameObject) Instantiate(Pig, transform.position + new Vector3(0, 2, 0), transform.rotation * Quaternion.Euler(Random.Range(-10,10),0,0));
+  }
+
+  void GetClosestEnemy () {
+    GameObject[] go = GameObject.FindGameObjectsWithTag("Enemy");
+
+    foreach(GameObject obj in go) {
+      Target = obj;
+    }
   }
 
 	// Update is called once per frame
 	void Update () {
-    if (waitProjectile > 0 && Projectile) {
+    GetClosestEnemy();
+
+    if (waitProjectile > 0 && Projectile && Target) {
       waitProjectile -= Time.deltaTime;
       if (waitProjectile >= 0) {
         Projectile.GetComponent<Ingredient>().FlyTo(Target.transform.position);
