@@ -1,10 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.VR;
+using UnityEngine.UI;
 
 public class CardboardInteract : MonoBehaviour {
 
 	public ParticleSystem SelectedItemParticles;
+	public GameObject musicItemButton;
+	public Text musicItemText;
+	public GameObject soundEffectsItemButton;
+	public Text soundEffectsItemText;
+	public GameObject creditsItemButton;
+	public Text creditsItemText;
 	GameObject[] items;
 	bool holdingItem;
 	GameObject itemHeld;
@@ -20,6 +27,70 @@ public class CardboardInteract : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		
+		if (GameObject.Find("PaperMenu") != null) {
+			if ((VRDevice.family != "oculus" && Cardboard.SDK.Triggered) || Input.GetMouseButtonUp(0)) {
+				Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+				RaycastHit hit;
+				if (Physics.Raycast(ray, out hit)) {
+					if (hit.collider.gameObject == musicItemButton && Time.time > timeInteracted + 0.3f) {
+						timeInteracted = Time.time;
+						Debug.Log("music item!");
+						bool enabled = musicItemText.fontStyle == FontStyle.Normal;
+						if (enabled) {
+							//disable..
+							musicItemText.fontStyle = FontStyle.Italic;
+							musicItemText.color = new Color(28/255f, 28/255f, 28/255f, 90/255f); //1C1C1CFF
+							Debug.Log("disable");
+							//disable music
+						} else {
+							//enable..
+							musicItemText.fontStyle = FontStyle.Normal;
+							musicItemText.color = new Color(28/255f, 28/255f, 28/255f, 1); //1C1C1CFF
+							Debug.Log("enable");
+							//enable music..
+						}
+					} else if (hit.collider.gameObject == soundEffectsItemButton && Time.time > timeInteracted + 0.3f) {
+						timeInteracted = Time.time;
+						Debug.Log("sound effects item!");
+						bool enabled = soundEffectsItemText.fontStyle == FontStyle.Normal;
+						if (enabled) {
+							//disable..
+							soundEffectsItemText.fontStyle = FontStyle.Italic;
+							soundEffectsItemText.color = new Color(28/255f, 28/255f, 28/255f, 90/255f); //1C1C1CFF
+							Debug.Log("disable");
+							//disable sound effects
+						} else {
+							//enable..
+							soundEffectsItemText.fontStyle = FontStyle.Normal;
+							soundEffectsItemText.color = new Color(28/255f, 28/255f, 28/255f, 1); //1C1C1CFF
+							Debug.Log("enable");
+							//enable sound effects..
+						}
+						//TODO: do something for sound effects..
+					} else if (hit.collider.gameObject == creditsItemButton && Time.time > timeInteracted + 0.3f) {
+						timeInteracted = Time.time;
+						Debug.Log("credits item!");
+						bool enabled = creditsItemText.fontStyle == FontStyle.Normal;
+						if (enabled) {
+							//disable..
+							creditsItemText.fontStyle = FontStyle.Italic;
+							creditsItemText.color = new Color(28/255f, 28/255f, 28/255f, 90/255f); //1C1C1CFF
+							Debug.Log("disable");
+							//disable music
+						} else {
+							//enable..
+							creditsItemText.fontStyle = FontStyle.Normal;
+							creditsItemText.color = new Color(28/255f, 28/255f, 28/255f, 1); //1C1C1CFF
+							Debug.Log("enable");
+							//enable music..
+						}
+						//TODO: do something for credits..
+					}
+				}
+			}
+		}
+
 		if (!GameManager.gameOver) {
 			if ((VRDevice.family != "oculus" && Cardboard.SDK.Triggered) || Input.GetMouseButtonUp(0)) {
 				Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
