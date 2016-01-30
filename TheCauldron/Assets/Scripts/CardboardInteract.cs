@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.VR;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CardboardInteract : MonoBehaviour {
 
@@ -30,6 +31,7 @@ public class CardboardInteract : MonoBehaviour {
 	void Update () {
 		
 		if (GameObject.Find("PaperMenu") != null && !holdingItem) {
+			gameOverText.gameObject.SetActive(false);
 			if ((VRDevice.family != "oculus" && Cardboard.SDK.Triggered) || Input.GetMouseButtonUp(0)) {
 				Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 				RaycastHit hit;
@@ -130,8 +132,12 @@ public class CardboardInteract : MonoBehaviour {
 				SelectedItemParticles.transform.position = itemHeld.transform.position;
 				itemHeld.transform.rotation *= Quaternion.Euler(Random.Range(5, 10) * diff * (diffVector.z / Mathf.Abs(diffVector.z)), 0, 0);
 			}
-		} else {// end of gameover
+		} /*else if (GameObject.Find("PaperMenu") == null) {// end of gameover
 			gameOverText.gameObject.SetActive(true);
+		}*/
+		if (SceneManager.GetActiveScene().name.Equals("Title") && GameManager.gameOver) {
+			gameOverText.gameObject.SetActive(true);
+			GameManager.gameOver = false;
 		}
 	}
 }

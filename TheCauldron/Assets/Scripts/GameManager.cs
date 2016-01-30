@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -16,6 +17,10 @@ public class GameManager : MonoBehaviour {
 	public static void SetGameOver(bool won) {
 		gameOver = true;
 		wonLevel = won;
+		if (!won) {
+			SceneManager.LoadScene("Title");
+//			GameObject.Find("Player").GetComponent<CardboardInteract>().gameOverText.gameObject.SetActive(true);
+		}
 	}
 
 }

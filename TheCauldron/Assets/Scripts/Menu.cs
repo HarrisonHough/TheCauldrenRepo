@@ -4,12 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour {
 
-	GameObject cauldron;
 	public GameObject paperMenu;
 
 	// Use this for initialization
 	void Start () {
-		cauldron = GameObject.FindGameObjectWithTag("Cauldron");
 	}
 
 	public void CallMenuItem(string action) {
