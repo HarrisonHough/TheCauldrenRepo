@@ -30,7 +30,6 @@ public class Ingredient : MonoBehaviour {
   public void FlyTo(Vector3 target) {
     Vector3 direction = target - transform.position;
     direction.Normalize();
-    Debug.Log(direction.ToString());
     GetComponent<Rigidbody>().AddForce(direction * 500);
   }
 
