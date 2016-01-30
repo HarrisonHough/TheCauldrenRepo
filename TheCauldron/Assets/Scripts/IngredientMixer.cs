@@ -39,7 +39,7 @@ public class IngredientMixer : MonoBehaviour {
   }
 
   GameObject MixIngredient () {
-    if (ingredients.Contains("Ham") && ingredients.Contains("Cheese")) {// Array Contains required ingredient
+    if (ingredients.Contains("Ham") && ingredients.Contains("Cheese")) {
       ingredients.Remove("Ham");
       ingredients.Remove("Cheese");
       return SpawnIngredient(Pig);
@@ -49,13 +49,14 @@ public class IngredientMixer : MonoBehaviour {
       ingredients.Remove("Potion");
       return SpawnIngredient(DragonClaw);
     }
+    if (ingredients.Contains("Potion")) {
+
+    }
     return null;
   }
 
   GameObject SpawnIngredient (GameObject ingredient) {
-    // Play cauldron flashy smoke effect
     FlashySmoke.Play();
-
     ingredients.Clear();
     return (GameObject) Instantiate(ingredient, transform.position + new Vector3(0, 1, 0), transform.rotation * Quaternion.Euler(Random.Range(-10,10),0,0));
   }
