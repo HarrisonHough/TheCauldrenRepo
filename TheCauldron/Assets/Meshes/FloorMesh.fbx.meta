@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 050b9a61e13ff4e309001ad1cadc1518
-timeCreated: 1454151087
+guid: 79ef176b6ce3b9442a160401761da789
+timeCreated: 1454150664
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: PlayPotionMesh
+    4300000: FloorMesh
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -54,7 +54,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     human: []
@@ -69,7 +69,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
