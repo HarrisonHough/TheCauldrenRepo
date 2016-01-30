@@ -15,7 +15,7 @@ public class Ingredient : MonoBehaviour {
   void OnTriggerEnter(Collider other) {
     cauldron.GetComponent<IngredientMixer>().AddIngredient(IngredientName);
     Destroy(gameObject);
-  }	
+  }
 
 	// Update is called once per frame
 	void Update () {
