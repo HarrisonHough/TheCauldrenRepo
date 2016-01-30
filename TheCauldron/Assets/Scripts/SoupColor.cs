@@ -16,6 +16,7 @@ public class SoupColor : MonoBehaviour {
     duration = 3;
     timer = 0;
     LastColor = new Color();
+    SoupMaterial.color = Color.gray;
 	}
 
 	// Update is called once per frame
@@ -46,4 +47,8 @@ public class SoupColor : MonoBehaviour {
       }
     }
 	}
+
+  void OnApplicationQuit () {
+    SoupMaterial.color = Color.gray;
+  }
 }

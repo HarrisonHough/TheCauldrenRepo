@@ -8,7 +8,7 @@ public class DeadEnemy : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+    DeadEnemyMaterial.SetColor("_TintColor", new Color(255, 255, 255, 1));
 	}
 
 	// Update is called once per frame
@@ -20,4 +20,9 @@ public class DeadEnemy : MonoBehaviour {
       DeadEnemyMaterial.SetColor("_TintColor", new Color(255, 255, 255, SecondsToDisappear * 0.25f));
     }
 	}
+
+  void OnApplicationQuit () {
+    DeadEnemyMaterial.SetColor("_TintColor", new Color(255, 255, 255, 0));
+  }
+
 }
