@@ -18,12 +18,15 @@ public class IngredientMixer : MonoBehaviour {
   // DUMMY: Ingredient tracker
   private ArrayList ingredients;
 
-  public GameObject Projectile;
+  private GameObject Projectile;
   public GameObject Target;
+  private float waitProjectile;
 
 	// Use this for initialization
 	void Start () {
     ingredients = new ArrayList();
+    waitProjectile = 1.0f;
+    Projectile = null;
 	}
 
   public void AddIngredient (string ingredient) {
@@ -32,9 +35,9 @@ public class IngredientMixer : MonoBehaviour {
     // foreach (string s in ingredients) {
     //   Debug.Log(s.ToString());
     // }
-    GameObject obj = MixIngredient();
-    if (obj) {
-      obj.GetComponent<Rigidbody>().AddForce(new Vector3(100, Random.Range(200, 400), Random.Range(-200, 200)));
+    Projectile = MixIngredient();
+    if (Projectile) {
+      Projectile.GetComponent<Rigidbody>().AddForce(new Vector3(100, Random.Range(200, 400), Random.Range(-200, 200)));
     }
   }
 
@@ -57,9 +60,18 @@ public class IngredientMixer : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+    if (waitProjectile > 0 && Projectile) {
+      waitProjectile -= Time.deltaTime;
+      if (waitProjectile >= 0) {
+        Projectile.GetComponent<Ingredient>().FlyTo(Target.transform.position);
+        waitProjectile = 1.0f;
+        Projectile = null;
+      }
+    }
     if (Input.GetKeyDown(KeyCode.Space)) // DUMMY: Just using spacebar to trigger for testing
     {
-      Projectile.GetComponent<Ingredient>().FlyTo(Target.transform.position);
+      // if (Projectile)
+      // Projectile.GetComponent<Ingredient>().FlyTo(Target.transform.position);
     }
 	}
 }
