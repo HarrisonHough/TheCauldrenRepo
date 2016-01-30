@@ -64,6 +64,7 @@ public class IngredientMixer : MonoBehaviour {
 
     foreach(GameObject obj in go) {
       Target = obj;
+      return;
     }
   }
 
