@@ -43,7 +43,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2fc20d2c5af144c3ea76b383c8c27698, type: 2}
+  - {fileID: 2100000, guid: 78db9af931bfb49478378e116814d3d7, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -137,7 +137,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2fc20d2c5af144c3ea76b383c8c27698, type: 2}
+      objectReference: {fileID: 2100000, guid: 78db9af931bfb49478378e116814d3d7, type: 2}
     - target: {fileID: 0}
       propertyPath: IngredientName
       value: Potion

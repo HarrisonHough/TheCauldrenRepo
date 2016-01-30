@@ -43,8 +43,8 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: cd8b10352a01842429635f7381d5891f, type: 2}
-  m_SubsetIndices: 
+  - {fileID: 2100000, guid: 78db9af931bfb49478378e116814d3d7, type: 2}
+  m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
   m_ReflectionProbeUsage: 1
@@ -107,7 +107,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11422366
@@ -119,8 +119,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8558d3184fb9742b599f19a7faa99e7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   IngredientName: Pig
   SoupColor: {r: 0.9485294, g: 0.74650997, b: 0.6556012, a: 0.784}
 --- !u!1001 &100100000
@@ -160,24 +160,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Cauldron
-      value: 
+      value:
       objectReference: {fileID: 100000, guid: f00ecb7b2048d7140afd36df37906c12, type: 3}
     - target: {fileID: 0}
-      propertyPath: SoupColor.r
-      value: 0.9485294
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: SoupColor.g
-      value: 0.74650997
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: SoupColor.b
-      value: 0.6556012
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: SoupColor.a
-      value: 0.784
-      objectReference: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value:
+      objectReference: {fileID: 2100000, guid: 78db9af931bfb49478378e116814d3d7, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 144804}

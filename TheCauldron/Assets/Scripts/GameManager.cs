@@ -3,14 +3,11 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 
-	public static bool gameOver;
-	public static int level;
-	public static bool wonLevel;
+	public static bool gameOver = false;
+	public static int level = 1;
+	public static bool wonLevel = false;
 
 	void Start() {
-		gameOver = false;
-		level = 1;
-		wonLevel = false;
 	}
 
 	public static void SetGameOver(bool won) {

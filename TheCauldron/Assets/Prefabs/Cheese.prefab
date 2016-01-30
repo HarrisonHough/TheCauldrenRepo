@@ -43,8 +43,8 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 8db6a473df3d140ba9d282384be95dc9, type: 2}
-  m_SubsetIndices: 
+  - {fileID: 2100000, guid: 78db9af931bfb49478378e116814d3d7, type: 2}
+  m_SubsetIndices:
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
   m_ReflectionProbeUsage: 1
@@ -107,7 +107,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11437290
@@ -119,8 +119,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8558d3184fb9742b599f19a7faa99e7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   IngredientName: Cheese
   SoupColor: {r: 0.9117647, g: 0.86367977, b: 0.21453287, a: 0.766}
 --- !u!1001 &100100000
@@ -151,21 +151,9 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: SoupColor.r
-      value: 0.9117647
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: SoupColor.g
-      value: 0.86367977
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: SoupColor.b
-      value: 0.21453287
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: SoupColor.a
-      value: 0.766
-      objectReference: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value:
+      objectReference: {fileID: 2100000, guid: 78db9af931bfb49478378e116814d3d7, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 151524}
