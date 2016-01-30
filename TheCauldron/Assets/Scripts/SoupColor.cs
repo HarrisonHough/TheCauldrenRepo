@@ -6,6 +6,7 @@ public class SoupColor : MonoBehaviour {
   public Color NextColor;
   public Material SoupMaterial;
   public ParticleSystem Smoke;
+  public Light SoupLight;
   private Color LastColor;
   private float timer;
   private float duration;
@@ -27,6 +28,8 @@ public class SoupColor : MonoBehaviour {
       timer += Time.deltaTime;
       Color c = Color.Lerp(LastColor, NextColor, timer / duration);
       SoupMaterial.color = c;
+      SoupLight.color = c;
+      SoupLight.intensity = 2;
 
       var col = Smoke.colorOverLifetime;
       col.enabled = true;
@@ -38,6 +41,7 @@ public class SoupColor : MonoBehaviour {
 
       if (timer >= duration) {
         SoupMaterial.color = NextColor;
+        SoupLight.intensity = 0;
         timer = 0;
       }
     }
