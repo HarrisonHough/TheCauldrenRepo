@@ -15,6 +15,10 @@ public class Ingredient : MonoBehaviour {
   void OnTriggerEnter(Collider other) {
     if (other.gameObject.tag == "Enemy") {
       Destroy(other.gameObject);
+			if (EnemyLoader.enemiesToSpawnThisLevel <= 0 && GameObject.FindGameObjectsWithTag("Enemy").Length <= 0) {
+				//you won!
+				GameManager.SetGameOver(true);
+			}
     } else if (other.gameObject.tag == "IngredientHit") {
       cauldron.GetComponent<IngredientMixer>().AddIngredient(IngredientName);
       Destroy(gameObject);
