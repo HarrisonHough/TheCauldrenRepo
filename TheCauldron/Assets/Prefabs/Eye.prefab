@@ -12,6 +12,8 @@ GameObject:
   - 23: {fileID: 2376944}
   - 95: {fileID: 9543128}
   - 114: {fileID: 11459366}
+  - 135: {fileID: 13504748}
+  - 54: {fileID: 5402140}
   m_Layer: 0
   m_Name: Eye
   m_TagString: Item
@@ -64,6 +66,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195186}
   m_Mesh: {fileID: 4300000, guid: 899b5397f4cd7974a8752ac374a09723, type: 3}
+--- !u!54 &5402140
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195186}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!95 &9543128
 Animator:
   serializedVersion: 3
@@ -93,6 +110,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IngredientName: Eye
+--- !u!135 &13504748
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195186}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 4.04702
+  m_Center: {x: 0.00000023841858, y: 0, z: -0.00000035762787}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
