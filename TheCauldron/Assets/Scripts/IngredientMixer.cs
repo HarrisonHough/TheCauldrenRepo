@@ -10,6 +10,7 @@ public class IngredientMixer : MonoBehaviour {
   // Combinable item
   public GameObject Pig;
   public GameObject DragonClaw;
+  public GameObject Pizza;
 
   // Particle Emitter
   public ParticleSystem FlashySmoke;
@@ -49,8 +50,10 @@ public class IngredientMixer : MonoBehaviour {
       ingredients.Remove("Potion");
       return SpawnIngredient(DragonClaw);
     }
-    if (ingredients.Contains("Potion")) {
-
+    if (ingredients.Contains("Potion") && ingredients.Contains("Pizza")) {
+      ingredients.Remove("Pizza");
+      ingredients.Remove("Potion");
+      return SpawnIngredient(Pizza);
     }
     return null;
   }

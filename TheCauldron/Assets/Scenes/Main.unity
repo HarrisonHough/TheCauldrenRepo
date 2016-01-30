@@ -661,7 +661,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8dced714020e12542a2112d1f774a1c0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -897,7 +897,7 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4290427578
+        rgba: 4286216826
       minMaxState: 0
     startSize:
       scalar: 1
@@ -1259,7 +1259,7 @@ ParticleSystem:
           rgba: 4160749567
         key1:
           serializedVersion: 2
-          rgba: 3320261119
+          rgba: 3313952124
         key2:
           serializedVersion: 2
           rgba: 8026746
@@ -2596,7 +2596,7 @@ Transform:
   - {fileID: 1807495634}
   - {fileID: 1249814074}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 3
 --- !u!82 &355327814
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6601,6 +6601,10 @@ Prefab:
       propertyPath: MagicalSmoke
       value: 
       objectReference: {fileID: 1610868481}
+    - target: {fileID: 11425014, guid: d1925bdc097ee407f83ead48f1f11540, type: 2}
+      propertyPath: Pizza
+      value: 
+      objectReference: {fileID: 165672, guid: 02b4d5daac58b4feea3841a634c71231, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d1925bdc097ee407f83ead48f1f11540, type: 2}
   m_IsPrefabParent: 0
@@ -7290,7 +7294,7 @@ Transform:
   m_Children:
   - {fileID: 1568776377}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!1001 &1085714399
 Prefab:
   m_ObjectHideFlags: 0
@@ -7379,7 +7383,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8dced714020e12542a2112d1f774a1c0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -7618,7 +7622,7 @@ ParticleSystem:
         rgba: 4293914871
       minMaxState: 0
     startSize:
-      scalar: 1.5
+      scalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -7634,7 +7638,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 0.6666667
+          value: 0.5
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -7755,7 +7759,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     type: 4
-    radius: 0.4
+    radius: 0.2
     angle: 10
     length: 5
     boxX: 1
@@ -11391,7 +11395,7 @@ Transform:
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 18
 --- !u!1 &1610868478
 GameObject:
   m_ObjectHideFlags: 0
@@ -11469,7 +11473,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1610868478}
   serializedVersion: 2
-  lengthInSec: 20
+  lengthInSec: 5
   startDelay:
     scalar: 0
     maxCurve:
@@ -11516,7 +11520,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 20
+      scalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -13703,7 +13707,7 @@ Transform:
   - {fileID: 1017106077}
   - {fileID: 1564294865}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 4
 --- !u!4 &1851763700 stripped
 Transform:
   m_PrefabParentObject: {fileID: 428242, guid: 7318ebb4c22a03d4fbfc54ebb7ecf223, type: 2}
