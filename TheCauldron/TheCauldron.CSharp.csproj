@@ -62,6 +62,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Asset Store\Game Jam Menu Template\Scripts\DontDestroy.cs" />
+    <Compile Include="Assets\Asset Store\Game Jam Menu Template\Scripts\EventSystemChecker.cs" />
+    <Compile Include="Assets\Asset Store\Game Jam Menu Template\Scripts\Pause.cs" />
+    <Compile Include="Assets\Asset Store\Game Jam Menu Template\Scripts\PlayMusic.cs" />
+    <Compile Include="Assets\Asset Store\Game Jam Menu Template\Scripts\QuitApplication.cs" />
+    <Compile Include="Assets\Asset Store\Game Jam Menu Template\Scripts\SetAudioLevels.cs" />
+    <Compile Include="Assets\Asset Store\Game Jam Menu Template\Scripts\ShowPanels.cs" />
+    <Compile Include="Assets\Asset Store\Game Jam Menu Template\Scripts\StartOptions.cs" />
     <Compile Include="Assets\Cardboard\Legacy\Scripts\CardboardOnGUI.cs" />
     <Compile Include="Assets\Cardboard\Legacy\Scripts\CardboardOnGUIMouse.cs" />
     <Compile Include="Assets\Cardboard\Legacy\Scripts\CardboardOnGUIWindow.cs" />
@@ -118,11 +126,21 @@
     <Compile Include="Assets\OVR\Scripts\Util\OVRScreenFade.cs" />
     <Compile Include="Assets\OVR\Scripts\Util\OVRTrackerBounds.cs" />
     <Compile Include="Assets\Scripts\CardboardInteract.cs" />
+    <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\EnemyLoader.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Ingredient.cs" />
     <Compile Include="Assets\Scripts\IngredientHit.cs" />
     <Compile Include="Assets\Scripts\IngredientMixer.cs" />
+    <Compile Include="Assets\Scripts\Menu.cs" />
+    <Compile Include="Assets\Scripts\MenuPotion.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Asset Store\Game Jam Menu Template\Fonts\OpenSans\License!.txt" />
+    <None Include="Assets\Asset Store\Game Jam Menu Template\GameJamTemplateReadMe.txt" />
+    <None Include="Assets\Asset Store\SimplePhysicalShader\SimplePhysicalShader.shader" />
+    <None Include="Assets\Asset Store\SimplePhysicalShader\SimplePhysicalShaderCoat.shader" />
+    <None Include="Assets\Asset Store\SimplePhysicalShader\SimplePhysicalShaderRetro.shader" />
     <None Include="Assets\Cardboard\Distortion\CardboardDistortion.cginc" />
     <None Include="Assets\Cardboard\Resources\SkyboxMesh.shader" />
     <None Include="Assets\Cardboard\Resources\SolidColor.shader" />

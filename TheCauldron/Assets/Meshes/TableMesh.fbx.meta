@@ -11,27 +11,37 @@ ModelImporter:
     100006: TableLeg2
     100008: TableLeg3
     100010: //RootNode
+    100012: TableLeg4
+    100014: TableTop
     400000: pCube3
     400002: TableLeg
     400004: TableLeg1
     400006: TableLeg2
     400008: TableLeg3
     400010: //RootNode
+    400012: TableLeg4
+    400014: TableTop
     2300000: pCube3
     2300002: TableLeg
     2300004: TableLeg1
     2300006: TableLeg2
     2300008: TableLeg3
+    2300010: TableLeg4
+    2300012: TableTop
     3300000: pCube3
     3300002: TableLeg
     3300004: TableLeg1
     3300006: TableLeg2
     3300008: TableLeg3
+    3300010: TableLeg4
+    3300012: TableTop
     4300000: pCube3
     4300002: TableLeg
     4300004: TableLeg2
     4300006: TableLeg3
     4300008: TableLeg1
+    4300010: TableTop
+    4300012: TableLeg4
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -76,7 +86,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     human: []
@@ -91,7 +101,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

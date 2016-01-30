@@ -42,7 +42,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: ba539a29daa8df64485c37e5f47d3714, type: 2}
+  - {fileID: 2100000, guid: 78db9af931bfb49478378e116814d3d7, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -105,11 +105,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3044014f8524ba5874a2e3c661c82d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Soup: {fileID: 0}
+  SoupMaterial: {fileID: 0}
   Ham: {fileID: 103314, guid: 9a1d2989091a04043b8a776e20c37fa7, type: 2}
+  HamColorSoup: {r: 0, g: 0, b: 0, a: 0}
   Cheese: {fileID: 180584, guid: 0251e126ef0e84fcf8b9ea704e60f300, type: 2}
+  CheeseColorSoup: {r: 0, g: 0, b: 0, a: 0}
   Pig: {fileID: 144804, guid: 22f3ac86210a443e9b92b5fb217193e5, type: 2}
-  PigReceipe: Ham,Cheese
-  RoastRecipe: Pig,Apple
+  PigColorSoup: {r: 0, g: 0, b: 0, a: 0}
+  Eye: {fileID: 0}
+  EyeColorSoup: {r: 0, g: 0, b: 0, a: 0}
+  Potion: {fileID: 0}
+  PotionColorSoup: {r: 0, g: 0, b: 0, a: 0}
+  DragonClaw: {fileID: 0}
+  DragonClawColorSoup: {r: 0, g: 0, b: 0, a: 0}
+  Pizza: {fileID: 0}
+  PizzaColorSoup: {r: 0, g: 0, b: 0, a: 0}
   FlashySmoke: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
@@ -117,7 +128,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 78db9af931bfb49478378e116814d3d7, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 180828}
