@@ -36,7 +36,7 @@ public class IngredientMixer : MonoBehaviour {
         particles.Play();
       }
       ingredients.Clear();
-      return (GameObject) Instantiate(Pig, transform.position + new Vector3(0, 1, 0), transform.rotation);
+      return (GameObject) Instantiate(Pig, transform.position + new Vector3(0, 1, 0), transform.rotation * Quaternion.Euler(Random.Range(-10,10),0,0));
     }
     return null;
   }
@@ -47,7 +47,7 @@ public class IngredientMixer : MonoBehaviour {
     {
       GameObject obj = MixIngredient();
       if (obj) {
-        obj.GetComponent<Rigidbody>().AddForce(transform.up * -10);
+        obj.GetComponent<Rigidbody>().AddForce(new Vector3(100, Random.Range(200, 400), Random.Range(-100, 100)));
       }
     }
 	}

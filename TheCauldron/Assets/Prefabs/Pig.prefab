@@ -9,13 +9,13 @@ GameObject:
   m_Component:
   - 4: {fileID: 492578}
   - 33: {fileID: 3365542}
-  - 135: {fileID: 13591168}
   - 23: {fileID: 2320368}
-  - 114: {fileID: 11475608}
-  - 54: {fileID: 5406012}
+  - 95: {fileID: 9559790}
+  - 135: {fileID: 13597232}
+  - 54: {fileID: 5488068}
   m_Layer: 0
   m_Name: Pig
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,9 +26,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144804}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.028202543, y: 2.6, z: 5.66}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.09959367, y: -0.14519751, z: 0.13543986, w: 0.97501534}
+  m_LocalPosition: {x: -1.697, y: 1.014, z: 0.877}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -49,7 +49,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
+  m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_MinimumChartSize: 4
@@ -64,8 +64,8 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144804}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &5406012
+  m_Mesh: {fileID: 4300000, guid: 591ae9bfe3234644484bd74a7ae276b2, type: 3}
+--- !u!54 &5488068
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -80,19 +80,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &11475608
-MonoBehaviour:
+--- !u!95 &9559790
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144804}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8558d3184fb9742b599f19a7faa99e7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IngredientName: Pig
---- !u!135 &13591168
+  m_Avatar: {fileID: 9000000, guid: 591ae9bfe3234644484bd74a7ae276b2, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!135 &13597232
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -102,8 +107,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 16.251389
+  m_Center: {x: -0.0000076293945, y: -0.0000004768371, z: -0.00000667572}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
