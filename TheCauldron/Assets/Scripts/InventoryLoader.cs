@@ -7,7 +7,7 @@ public class InventoryLoader : MonoBehaviour {
   public Transform SpawnLocation;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
     Spawn();
 	}
 
