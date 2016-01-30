@@ -17,6 +17,13 @@ public class Ingredient : MonoBehaviour {
     Destroy(gameObject);
   }
 
+  public void FlyTo(Vector3 target) {
+    Vector3 direction = target - transform.position;
+    direction.Normalize();
+    Debug.Log(direction.ToString());
+    GetComponent<Rigidbody>().AddForce(direction * 10);
+  }
+
 	// Update is called once per frame
 	void Update () {
 

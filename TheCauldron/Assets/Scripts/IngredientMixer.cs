@@ -18,6 +18,9 @@ public class IngredientMixer : MonoBehaviour {
   // DUMMY: Ingredient tracker
   private ArrayList ingredients;
 
+  public GameObject Projectile;
+  public GameObject Target;
+
 	// Use this for initialization
 	void Start () {
     ingredients = new ArrayList();
@@ -56,10 +59,7 @@ public class IngredientMixer : MonoBehaviour {
 	void Update () {
     if (Input.GetKeyDown(KeyCode.Space)) // DUMMY: Just using spacebar to trigger for testing
     {
-      GameObject obj = MixIngredient();
-      if (obj) {
-        obj.GetComponent<Rigidbody>().AddForce(new Vector3(200, Random.Range(100, 300), Random.Range(-200, 200)));
-      }
+      Projectile.GetComponent<Ingredient>().FlyTo(Target.transform.position);
     }
 	}
 }
