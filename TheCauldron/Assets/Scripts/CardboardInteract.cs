@@ -12,6 +12,7 @@ public class CardboardInteract : MonoBehaviour {
 	public Text soundEffectsItemText;
 	public GameObject creditsItemButton;
 	public Text creditsItemText;
+	public Text gameOverText;
 	GameObject[] items;
 	bool holdingItem;
 	GameObject itemHeld;
@@ -127,8 +128,10 @@ public class CardboardInteract : MonoBehaviour {
 				float diff = diffVector.magnitude;
 				itemHeld.transform.position = Vector3.Lerp(itemHeld.transform.position, frontOfCamera, Time.deltaTime * smooth);
 				SelectedItemParticles.transform.position = itemHeld.transform.position;
-				itemHeld.transform.rotation *= Quaternion.Euler(Random.Range(5,10) * diff * (diffVector.z/Mathf.Abs(diffVector.z)), 0, 0);
+				itemHeld.transform.rotation *= Quaternion.Euler(Random.Range(5, 10) * diff * (diffVector.z / Mathf.Abs(diffVector.z)), 0, 0);
 			}
-		} // end of gameover
+		} else {// end of gameover
+			gameOverText.gameObject.SetActive(true);
+		}
 	}
 }

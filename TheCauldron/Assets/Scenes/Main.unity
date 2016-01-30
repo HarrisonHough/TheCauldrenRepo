@@ -6436,6 +6436,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11430210, guid: 11eb092e0f68b492e8d6b1e5a993bb4b, type: 2}
+      propertyPath: gameOverText
+      value: 
+      objectReference: {fileID: 1960591840}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 11eb092e0f68b492e8d6b1e5a993bb4b, type: 2}
   m_IsPrefabParent: 0
