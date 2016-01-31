@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour {
 	public float distanceToPlayerForDeath = 1f;
 	public GameObject player;
 	public GameObject DeadEnemyPrefab;
+
 	public bool alive = true;
 	public float speed;
 
