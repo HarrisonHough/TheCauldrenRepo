@@ -2236,7 +2236,7 @@ Transform:
   - {fileID: 1597969318}
   - {fileID: 655325670}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!82 &355327814
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6251,7 +6251,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1 &1017106075
 GameObject:
   m_ObjectHideFlags: 0
@@ -6626,7 +6626,7 @@ Transform:
   m_Children:
   - {fileID: 1568776377}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1001 &1085714399
 Prefab:
   m_ObjectHideFlags: 0
@@ -12328,6 +12328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room: {fileID: 0}
+  difficulty: 0
 --- !u!4 &1676786626 stripped
 Transform:
   m_PrefabParentObject: {fileID: 412274, guid: 360909fbd0c035d4891199920baa903f, type: 2}
@@ -13066,7 +13067,7 @@ Transform:
   - {fileID: 1640791076}
   - {fileID: 729025687}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!4 &1897083172 stripped
 Transform:
   m_PrefabParentObject: {fileID: 490490, guid: 823f5cefb886a2e42b3b095dfb4ff358, type: 2}
