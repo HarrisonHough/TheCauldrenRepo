@@ -23,8 +23,6 @@ public class IngredientMixer : MonoBehaviour {
   private ArrayList ingredients;
 
   private ArrayList Projectiles;
-  private GameObject Target;
-  private float waitProjectile;
 
 	// Use this for initialization
 	void Start () {
@@ -95,29 +93,29 @@ public class IngredientMixer : MonoBehaviour {
 		return closestXEnemies;
 	}
 
-  void GetClosestEnemy () {
+  GameObject GetClosestEnemy () {
     GameObject[] go = GameObject.FindGameObjectsWithTag("Enemy");
 
 		if (go.Length > 0) {
-			Target = GetClosestEnemies(1)[0];
+			return GetClosestEnemies(1)[0];
 		}
+    return null;
   }
 
 	// Update is called once per frame
 	void Update () {
-    GetClosestEnemy();
-    Vector3 targetPos;
-    if (!Target) {
-      targetPos = transform.position;
-    } else {
-      targetPos = Target.transform.position;
+    GameObject[] enemies = GetClosestEnemies(Projectiles.Count);
+
+    for (int i = 0; i < Projectiles.Count; i++) {
+      Vector3 targetPos;
+      if (i < enemies.Length) {
+        targetPos = enemies[i].transform.position;
+      } else {
+        targetPos = transform.position;
+      }
+      ((GameObject) Projectiles[i]).GetComponent<Ingredient>().FlyTo(targetPos + new Vector3(0, 3, 0));
     }
 
-    for (int i = 0; i < Projectiles.Length; i++) {
-      if (Target) {
-        Projectile.GetComponent<Ingredient>().FlyTo(targetPos + new Vector3(0, 3, 0));
-      }
-      Projectiles.Remove(Projectiles[i]);
-    }
+    Projectiles.Clear();
 	}
 }
