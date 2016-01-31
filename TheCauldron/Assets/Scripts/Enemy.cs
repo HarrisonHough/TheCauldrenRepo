@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour {
 
 	public void OnHit () {
     Instantiate(DeadEnemyPrefab, transform.position, transform.rotation);
-    if (EnemyLoader.enemiesToSpawnThisLevel <= 0 && GameObject.FindGameObjectsWithTag("Enemy").Length <= 0) {
+    if (EnemyLoader.enemiesToSpawnThisLevel <= 0 && GameObject.FindGameObjectsWithTag("Enemy").Length <= 1) {
       //you won!
       GameManager.SetGameOver(true);
     }
