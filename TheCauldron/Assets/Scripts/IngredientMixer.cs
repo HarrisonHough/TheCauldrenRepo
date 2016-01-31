@@ -30,6 +30,7 @@ public class IngredientMixer : MonoBehaviour {
 
   public void AddIngredient (string ingredient) {
     ingredients.Add(ingredient);
+    GetComponent<AudioSource>().Play();
     MixIngredient();
     MagicalSmoke.Play();
   }
