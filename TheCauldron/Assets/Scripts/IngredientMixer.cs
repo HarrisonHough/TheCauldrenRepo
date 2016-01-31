@@ -67,6 +67,17 @@ public class IngredientMixer : MonoBehaviour {
       SpawnIngredient(Pizza);
       FlashySmoke.Play();
     }
+    else if (ingredients.Contains("DragonClaw")) {
+      ingredients.Remove("DragonClaw");
+      SpawnIngredient(DragonClaw);
+      SpawnIngredient(DragonClaw);
+      FlashySmoke.Play();
+    }
+    else if (ingredients.Contains("Pig")) {
+      ingredients.Remove("Pig");
+      SpawnIngredient(Pig);
+      FlashySmoke.Play();
+    }
   }
 
   void SpawnIngredient (GameObject ingredient) {
