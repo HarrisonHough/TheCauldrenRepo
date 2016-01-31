@@ -19,9 +19,7 @@ public class IngredientMixer : MonoBehaviour {
   public ParticleSystem FlashySmoke;
   public ParticleSystem MagicalSmoke;
 
-  // DUMMY: Ingredient tracker
   private ArrayList ingredients;
-
   private ArrayList Projectiles;
 
 	// Use this for initialization

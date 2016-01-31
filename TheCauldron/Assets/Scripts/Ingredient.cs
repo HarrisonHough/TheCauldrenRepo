@@ -20,6 +20,7 @@ public class Ingredient : MonoBehaviour {
       if (other.gameObject.tag == "IngredientHit") {
         cauldron.GetComponent<IngredientMixer>().AddIngredient(IngredientName);
         soup.GetComponent<SoupColor>().NextColor = SoupColor;
+        GetComponent<AudioSource>().Play();
         Destroy(gameObject);
       } else if (other.gameObject.tag == "Enemy") {
         if (!GetComponent<Rigidbody>().isKinematic)
