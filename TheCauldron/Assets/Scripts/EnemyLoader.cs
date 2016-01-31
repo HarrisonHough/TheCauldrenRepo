@@ -10,7 +10,10 @@ public class EnemyLoader : MonoBehaviour {
 
 	public GameObject enemyPrefab;
 
+	bool newGame = true;
+
 	public void NewGame() {
+		timeFromLastSpawn = Time.time;
 		SetEnemiesToSpawnThisLevel();
 		GenerateTimeToNextSpawn();
 	}
@@ -43,42 +46,8 @@ public class EnemyLoader : MonoBehaviour {
 		}
 	}
 
-	void ToggleNorthSpawner(bool toggle) {
-		GameObject.Find("EnemySpawnerN").gameObject.SetActive(toggle);
-	}
-
-	void ToggleSouthSpawner(bool toggle) {
-		GameObject.Find("EnemySpawnerS").gameObject.SetActive(toggle);
-	}
-
-	void ToggleEastSpawner(bool toggle) {
-		GameObject.Find("EnemySpawnerE").gameObject.SetActive(toggle);
-	}
-
-	void ToggleWestSpawner(bool toggle) {
-		GameObject.Find("EnemySpawnerW").gameObject.SetActive(toggle);
-	}
-
 	void SetEnemiesToSpawnThisLevel() {
-		if (GameManager.level == 1) {
-			//only three enemies in level 1..
-			enemiesToSpawnThisLevel = 3;
-			//only the North spawner is open..
-			ToggleEastSpawner(false);
-			ToggleNorthSpawner(true);
-			ToggleSouthSpawner(false);
-			ToggleWestSpawner(false);
-		} else if (GameManager.level == 2) {
-			enemiesToSpawnThisLevel = 4;
-			// the North & South spawner is open..
-			ToggleEastSpawner(false);
-			ToggleNorthSpawner(true);
-			ToggleSouthSpawner(true);
-			ToggleWestSpawner(false);
-		} else {
-			enemiesToSpawnThisLevel = 2;
-		}
-		//TODO: set enemies we can spawn per level.. and maybe spawners??
+		enemiesToSpawnThisLevel = GameManager.level;
 	}
 
 
