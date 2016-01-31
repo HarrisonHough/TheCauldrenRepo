@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour {
 				transform.position += transform.forward * speed * Time.deltaTime;
 			} else {
 				//Game over or injury..
-				GameManager.SetGameOver(false);
+//uncomment				GameManager.SetGameOver(false);
 			}
 		}
 	}
