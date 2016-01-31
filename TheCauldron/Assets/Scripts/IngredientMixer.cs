@@ -94,11 +94,11 @@ public class IngredientMixer : MonoBehaviour {
       targetPos = Target.transform.position;
     }
 
-    foreach(GameObject Projectile in Projectiles) {
+    for (int i = 0; i < Projectiles.Length; i++) {
       if (Target) {
         Projectile.GetComponent<Ingredient>().FlyTo(targetPos + new Vector3(0, 3, 0));
       }
-      Projectiles.Remove(Projectile);
+      Projectiles.Remove(Projectiles[i]);
     }
 	}
 }
