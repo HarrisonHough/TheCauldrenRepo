@@ -85,7 +85,7 @@ public class CardboardInteract : MonoBehaviour {
 					if (holdingItem && Time.time > timeInteracted + 0.3f) {
 						holdingItem = false;
 						itemHeld.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-						SelectedItemParticles.transform.position = new Vector3(0, -10, 0);
+						// SelectedItemParticles.transform.position = new Vector3(0, -10, 0);
 						itemHeld = null;
 						timeInteracted = Time.time;
 					}
@@ -97,7 +97,7 @@ public class CardboardInteract : MonoBehaviour {
 				Vector3 diffVector = frontOfCamera - itemHeld.transform.position;
 				float diff = diffVector.magnitude;
 				itemHeld.transform.position = Vector3.Lerp(itemHeld.transform.position, frontOfCamera, Time.deltaTime * smooth);
-				SelectedItemParticles.transform.position = itemHeld.transform.position;
+				// SelectedItemParticles.transform.position = itemHeld.transform.position;
 				itemHeld.transform.rotation *= Quaternion.Euler(Random.Range(5, 10) * diff * (diffVector.z / Mathf.Abs(diffVector.z)), 0, 0);
 			}
 		}
@@ -194,7 +194,7 @@ public class CardboardInteract : MonoBehaviour {
 					if (holdingItem && Time.time > timeInteracted + 0.3f) {
 						holdingItem = false;
 						itemHeld.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-						SelectedItemParticles.transform.position = new Vector3(0, -10, 0);
+						// SelectedItemParticles.transform.position = new Vector3(0, -10, 0);
 						itemHeld = null;
 						timeInteracted = Time.time;
 					}
@@ -206,7 +206,7 @@ public class CardboardInteract : MonoBehaviour {
 				Vector3 diffVector = frontOfCamera - itemHeld.transform.position;
 				float diff = diffVector.magnitude;
 				itemHeld.transform.position = Vector3.Lerp(itemHeld.transform.position, frontOfCamera, Time.deltaTime * smooth);
-				SelectedItemParticles.transform.position = itemHeld.transform.position;
+				// SelectedItemParticles.transform.position = itemHeld.transform.position;
 				itemHeld.transform.rotation *= Quaternion.Euler(Random.Range(5, 10) * diff * (diffVector.z / Mathf.Abs(diffVector.z)), 0, 0);
 			}
 		} /*else if (GameObject.Find("PaperMenu") == null) {// end of gameover
