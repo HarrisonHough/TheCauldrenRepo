@@ -10,6 +10,10 @@ public class EnemyLoader : MonoBehaviour {
 
 	public GameObject enemyPrefab;
 
+	public void NewGame() {
+		SetEnemiesToSpawnThisLevel();
+	}
+
 	// Use this for initialization
 	void Start () {
 		SetEnemiesToSpawnThisLevel();
@@ -34,7 +38,7 @@ public class EnemyLoader : MonoBehaviour {
 			timeToNextSpawn = Random.Range(8, 11);
 		} else {
 			//TODO: scale according to level..
-
+			timeToNextSpawn = Random.Range(5, 8);
 		}
 	}
 
@@ -42,6 +46,8 @@ public class EnemyLoader : MonoBehaviour {
 		if (GameManager.level == 1) {
 			//only three enemies in level 1..
 			enemiesToSpawnThisLevel = 3;
+		} else {
+			enemiesToSpawnThisLevel = 2;
 		}
 		//TODO: set enemies we can spawn per level.. and maybe spawners??
 	}

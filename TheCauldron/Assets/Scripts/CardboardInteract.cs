@@ -16,6 +16,7 @@ public class CardboardInteract : MonoBehaviour {
 	public Text gameOverText;
 	public Text waveText;
 	public InventoryLoader inventoryLoader;
+	public EnemyLoader enemyLoader;
 
 	GameObject[] items;
 	bool holdingItem;
@@ -167,6 +168,7 @@ public class CardboardInteract : MonoBehaviour {
 				//inventory loader.
 				inventoryLoader.Spawn();
 				items = GameObject.FindGameObjectsWithTag("Item");
+				enemyLoader.NewGame();
 			}
 		}
 	}
