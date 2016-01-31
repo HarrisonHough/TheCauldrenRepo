@@ -15,6 +15,7 @@ public class CardboardInteract : MonoBehaviour {
 	public Text creditsItemText;
 	public Text gameOverText;
 	public Text waveText;
+	public InventoryLoader inventoryLoader;
 
 	GameObject[] items;
 	bool holdingItem;
@@ -164,6 +165,7 @@ public class CardboardInteract : MonoBehaviour {
 				GameManager.wonLevel = false;
 				GameManager.level++;
 				//inventory loader.
+				inventoryLoader.Spawn();
 			}
 		}
 	}

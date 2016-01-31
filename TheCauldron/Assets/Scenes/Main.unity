@@ -2573,6 +2573,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 355327813}
   - 82: {fileID: 355327814}
+  - 114: {fileID: 355327815}
   m_Layer: 0
   m_Name: Room
   m_TagString: Untagged
@@ -2671,6 +2672,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &355327815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 355327812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a058d30b4beb42559375fd121a133e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Inventory: {fileID: 181518, guid: 13fd26896288348caa2020eabc0dfd2f, type: 2}
+  SpawnLocation: {fileID: 404276, guid: adb288b4cd4ed4f6f9868a228a8923db, type: 2}
 --- !u!1001 &366172013
 Prefab:
   m_ObjectHideFlags: 0
@@ -6524,6 +6538,10 @@ Prefab:
       propertyPath: waveText
       value: 
       objectReference: {fileID: 497880914}
+    - target: {fileID: 11430210, guid: 11eb092e0f68b492e8d6b1e5a993bb4b, type: 2}
+      propertyPath: inventoryLoader
+      value: 
+      objectReference: {fileID: 355327815}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 11eb092e0f68b492e8d6b1e5a993bb4b, type: 2}
   m_IsPrefabParent: 0
