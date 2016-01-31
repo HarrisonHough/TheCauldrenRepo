@@ -35,7 +35,7 @@ public class CardboardInteract : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
+
 		if (GameObject.Find("PaperMenu") != null && !holdingItem) {
 			gameOverText.gameObject.SetActive(false);
 			if ((VRDevice.family != "oculus" && Cardboard.SDK.Triggered) || Input.GetMouseButtonUp(0)) {
@@ -166,6 +166,7 @@ public class CardboardInteract : MonoBehaviour {
 				GameManager.level++;
 				//inventory loader.
 				inventoryLoader.Spawn();
+				items = GameObject.FindGameObjectsWithTag("Item");
 			}
 		}
 	}

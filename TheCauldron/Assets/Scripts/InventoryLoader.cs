@@ -5,6 +5,7 @@ public class InventoryLoader : MonoBehaviour {
 
   public GameObject Inventory;
   public Transform SpawnLocation;
+  private GameObject lastInventory;
 
 	// Use this for initialization
 	void Awake () {
@@ -12,7 +13,10 @@ public class InventoryLoader : MonoBehaviour {
 	}
 
   public void Spawn () {
-    Instantiate(Inventory, SpawnLocation.position, SpawnLocation.rotation);
+    if (lastInventory) {
+      Destroy(lastInventory);
+    }
+    lastInventory = (GameObject) Instantiate(Inventory, SpawnLocation.position, SpawnLocation.rotation);
   }
 
 	// Update is called once per frame
