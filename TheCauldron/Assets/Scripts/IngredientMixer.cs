@@ -23,8 +23,6 @@ public class IngredientMixer : MonoBehaviour {
   private ArrayList ingredients;
 
   private ArrayList Projectiles;
-  private GameObject Target;
-  private float waitProjectile;
 
 	// Use this for initialization
 	void Start () {
@@ -39,7 +37,17 @@ public class IngredientMixer : MonoBehaviour {
   }
 
   void MixIngredient () {
-    if (ingredients.Contains("Potion")) {
+    if (ingredients.Contains("Eye") && ingredients.Contains("Potion")) {
+      ingredients.Remove("Eye");
+      ingredients.Remove("Potion");
+      SpawnIngredient(DragonClaw);
+      SpawnIngredient(DragonClaw);
+      SpawnIngredient(DragonClaw);
+      SpawnIngredient(DragonClaw);
+      SpawnIngredient(DragonClaw);
+      FlashySmoke.Play();
+    }
+    else if (ingredients.Contains("Potion")) {
       ingredients.Remove("Potion");
       SpawnIngredient(Potion);
       FlashySmoke.Play();
@@ -48,12 +56,8 @@ public class IngredientMixer : MonoBehaviour {
       ingredients.Remove("Ham");
       ingredients.Remove("Cheese");
       SpawnIngredient(Pig);
-      FlashySmoke.Play();
-    }
-    else if (ingredients.Contains("Eye") && ingredients.Contains("Potion")) {
-      ingredients.Remove("Eye");
-      ingredients.Remove("Potion");
-      SpawnIngredient(DragonClaw);
+      SpawnIngredient(Pig);
+      SpawnIngredient(Pig);
       FlashySmoke.Play();
     }
     else if (ingredients.Contains("Pizza")) {
@@ -61,6 +65,17 @@ public class IngredientMixer : MonoBehaviour {
       SpawnIngredient(Pizza);
       SpawnIngredient(Pizza);
       SpawnIngredient(Pizza);
+      FlashySmoke.Play();
+    }
+    else if (ingredients.Contains("DragonClaw")) {
+      ingredients.Remove("DragonClaw");
+      SpawnIngredient(DragonClaw);
+      SpawnIngredient(DragonClaw);
+      FlashySmoke.Play();
+    }
+    else if (ingredients.Contains("Pig")) {
+      ingredients.Remove("Pig");
+      SpawnIngredient(Pig);
       FlashySmoke.Play();
     }
   }
@@ -95,30 +110,30 @@ public class IngredientMixer : MonoBehaviour {
 		return closestXEnemies;
 	}
 
-  void GetClosestEnemy () {
+  GameObject GetClosestEnemy () {
     GameObject[] go = GameObject.FindGameObjectsWithTag("Enemy");
 
 		if (go.Length > 0) {
-			Target = GetClosestEnemies(1)[0];
+			return GetClosestEnemies(1)[0];
 		}
+    return null;
   }
 
 	// Update is called once per frame
 	void Update () {
-    GetClosestEnemy();
-    Vector3 targetPos;
-    if (!Target) {
-      targetPos = transform.position;
-    } else {
-      targetPos = Target.transform.position;
+    GameObject[] enemies = GetClosestEnemies(Projectiles.Count);
+
+    for (int i = 0; i < Projectiles.Count; i++) {
+      Vector3 targetPos;
+      if (i < enemies.Length) {
+        targetPos = enemies[i].transform.position;
+      } else {
+        targetPos = transform.position;
+      }
+      ((GameObject) Projectiles[i]).GetComponent<Ingredient>().FlyTo(targetPos + new Vector3(0, 3, 0));
     }
 
-    foreach(GameObject Projectile in Projectiles) {
-      if (Target) {
-        Projectile.GetComponent<Ingredient>().FlyTo(targetPos + new Vector3(0, 3, 0));
-      }
-      Projectiles.Remove(Projectile);
-    }
+    Projectiles.Clear();
 	}
 
 	public GameObject[] GetAllEnemies() {

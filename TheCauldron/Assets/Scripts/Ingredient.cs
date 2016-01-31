@@ -22,7 +22,8 @@ public class Ingredient : MonoBehaviour {
         soup.GetComponent<SoupColor>().NextColor = SoupColor;
         Destroy(gameObject);
       } else if (other.gameObject.tag == "Enemy") {
-        other.gameObject.GetComponent<Enemy>().OnHit();
+        if (!GetComponent<Rigidbody>().isKinematic)
+          other.gameObject.GetComponent<Enemy>().OnHit();
       }
     }
   }
