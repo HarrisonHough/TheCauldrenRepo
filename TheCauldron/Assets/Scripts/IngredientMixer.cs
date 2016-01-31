@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public class IngredientMixer : MonoBehaviour {
 
@@ -70,18 +72,35 @@ public class IngredientMixer : MonoBehaviour {
     Projectiles.Add(Projectile);
   }
 
+	GameObject[] GetClosestEnemies(int numberOfEnemies) {
+		List<GameObject> allEnemies = GameObject.FindGameObjectsWithTag("Enemy").ToList();
+		Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+
+		int min = Mathf.Min(allEnemies.Count, numberOfEnemies);
+		GameObject[] closestXEnemies = new GameObject[min];
+
+		for (int i = 0; i < min; i++) {
+			foreach (GameObject enemy in allEnemies) {
+				if (closestXEnemies[i] == null) {
+					closestXEnemies[i] = enemy;
+				} else {
+					if (Vector3.Distance(enemy.transform.position, playerPos) < Vector3.Distance(closestXEnemies[i].transform.position, playerPos)) {
+						closestXEnemies[i] = enemy;
+					}
+				}
+			}
+			allEnemies.Remove(closestXEnemies[i]);
+		}
+
+		return closestXEnemies;
+	}
+
   void GetClosestEnemy () {
     GameObject[] go = GameObject.FindGameObjectsWithTag("Enemy");
 
-		GameObject closestEnemy;
-		Vector3 position;
-
-    foreach(GameObject obj in go) {
-			//TODO: find the closest enemy here
-      Target = obj;
-      return;
-			//if (obj.transform.position
-    }
+		if (go.Length > 0) {
+			Target = GetClosestEnemies(1)[0];
+		}
   }
 
 	// Update is called once per frame
