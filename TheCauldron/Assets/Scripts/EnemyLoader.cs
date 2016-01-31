@@ -51,4 +51,6 @@ public class EnemyLoader : MonoBehaviour {
 		}
 		//TODO: set enemies we can spawn per level.. and maybe spawners??
 	}
+
+
 }
