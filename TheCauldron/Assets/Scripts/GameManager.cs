@@ -9,10 +9,17 @@ public class GameManager : MonoBehaviour {
 	public static int level = 1;
 	public static bool wonLevel = false;
 	public GameObject room;
+	public static bool playMusic = true;
+	public static bool playSoundEffects = true;
+
 	// sound effects: public GameObject ;
 	public float difficulty = 0f;
 
 	void Start() {
+	}
+
+	void OnLevelWasLoaded() {
+		room.GetComponent<AudioSource>().mute = playMusic;
 	}
 
 	public static void SetGameOver(bool won) {

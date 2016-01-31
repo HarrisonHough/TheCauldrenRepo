@@ -36,7 +36,74 @@ public class CardboardInteract : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		InteractWithPaperMenu();
 
+		InteractWithItems();
+
+
+		if (SceneManager.GetActiveScene().name.Equals("Title") && GameManager.gameOver) {
+			//show the game over text when you move to the title screen from game over
+			gameOverText.gameObject.SetActive(true);
+			GameManager.gameOver = false;
+			//also check the fonts for the music and sound effects.. they reset on scene load
+			if (GameObject.Find("Room").GetComponent<AudioSource>().mute) {
+				//disable..
+				musicItemText.fontStyle = FontStyle.Italic;
+				musicItemText.color = new Color(28/255f, 28/255f, 28/255f, 90/255f); //1C1C1CFF
+			}
+			//TODO: mute sound effects
+			/*if (!playSoundEffects) {
+				soundEffectsItemText.fontStyle = FontStyle.Italic;
+				soundEffectsItemText.color = new Color(28/255f, 28/255f, 28/255f, 90/255f); //1C1C1CFF
+			}*/
+		}
+
+		if (SceneManager.GetActiveScene().name.Equals("Main") && GameManager.gameOver) {
+			//you've won..
+			waveText.gameObject.SetActive(true);
+			WaitForNextWave();
+		}
+	}
+
+	void InteractWithItems() {
+		if (!GameManager.gameOver) {
+			if ((VRDevice.family != "oculus" && Cardboard.SDK.Triggered) || Input.GetMouseButtonUp(0)) {
+				Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+				RaycastHit hit;
+				if (Physics.Raycast(ray, out hit)) {
+					if (!holdingItem && Time.time > timeInteracted + 0.3f) {
+
+						foreach (GameObject item in items) {
+							if (hit.collider.gameObject == item) {
+								holdingItem = true;
+								itemHeld = item;
+								timeInteracted = Time.time;
+							}
+						}
+					}
+
+					if (holdingItem && Time.time > timeInteracted + 0.3f) {
+						holdingItem = false;
+						itemHeld.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+						SelectedItemParticles.transform.position = new Vector3(0, -10, 0);
+						itemHeld = null;
+						timeInteracted = Time.time;
+					}
+				}
+			}
+
+			if (holdingItem && itemHeld != null) {
+				Vector3 frontOfCamera = Camera.main.transform.position + Camera.main.transform.forward * distance;
+				Vector3 diffVector = frontOfCamera - itemHeld.transform.position;
+				float diff = diffVector.magnitude;
+				itemHeld.transform.position = Vector3.Lerp(itemHeld.transform.position, frontOfCamera, Time.deltaTime * smooth);
+				SelectedItemParticles.transform.position = itemHeld.transform.position;
+				itemHeld.transform.rotation *= Quaternion.Euler(Random.Range(5, 10) * diff * (diffVector.z / Mathf.Abs(diffVector.z)), 0, 0);
+			}
+		}
+	}
+
+	void InteractWithPaperMenu() {
 		if (GameObject.Find("PaperMenu") != null && !holdingItem) {
 			gameOverText.gameObject.SetActive(false);
 			if ((VRDevice.family != "oculus" && Cardboard.SDK.Triggered) || Input.GetMouseButtonUp(0)) {
@@ -53,6 +120,7 @@ public class CardboardInteract : MonoBehaviour {
 							musicItemText.color = new Color(28/255f, 28/255f, 28/255f, 90/255f); //1C1C1CFF
 							Debug.Log("disable");
 							GameObject.Find("Room").GetComponent<AudioSource>().mute = true;
+							GameManager.playMusic = true;
 							//GameManager.musicEnabled(false);
 							//disable music
 						} else {
@@ -61,6 +129,7 @@ public class CardboardInteract : MonoBehaviour {
 							musicItemText.color = new Color(28/255f, 28/255f, 28/255f, 1); //1C1C1CFF
 							Debug.Log("enable");
 							GameObject.Find("Room").GetComponent<AudioSource>().mute = false;
+							GameManager.playMusic = false;
 							//GameManager.musicEnabled(true);
 							//enable music..
 						}
@@ -151,11 +220,11 @@ public class CardboardInteract : MonoBehaviour {
 		if (SceneManager.GetActiveScene().name.Equals("Main") && GameManager.gameOver) {
 			//you've won..
 			waveText.gameObject.SetActive(true);
-			waitForNextWave();
+			WaitForNextWave();
 		}
 	}
 
-	void waitForNextWave() {
+	void WaitForNextWave() {
 		if (!waitingForNextWave) {
 			waitingForNextWave = true;
 			timeWon = Time.time;
