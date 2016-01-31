@@ -37,7 +37,17 @@ public class IngredientMixer : MonoBehaviour {
   }
 
   void MixIngredient () {
-    if (ingredients.Contains("Potion")) {
+    if (ingredients.Contains("Eye") && ingredients.Contains("Potion")) {
+      ingredients.Remove("Eye");
+      ingredients.Remove("Potion");
+      SpawnIngredient(DragonClaw);
+      SpawnIngredient(DragonClaw);
+      SpawnIngredient(DragonClaw);
+      SpawnIngredient(DragonClaw);
+      SpawnIngredient(DragonClaw);
+      FlashySmoke.Play();
+    }
+    else if (ingredients.Contains("Potion")) {
       ingredients.Remove("Potion");
       SpawnIngredient(Potion);
       FlashySmoke.Play();
@@ -46,12 +56,8 @@ public class IngredientMixer : MonoBehaviour {
       ingredients.Remove("Ham");
       ingredients.Remove("Cheese");
       SpawnIngredient(Pig);
-      FlashySmoke.Play();
-    }
-    else if (ingredients.Contains("Eye") && ingredients.Contains("Potion")) {
-      ingredients.Remove("Eye");
-      ingredients.Remove("Potion");
-      SpawnIngredient(DragonClaw);
+      SpawnIngredient(Pig);
+      SpawnIngredient(Pig);
       FlashySmoke.Play();
     }
     else if (ingredients.Contains("Pizza")) {
