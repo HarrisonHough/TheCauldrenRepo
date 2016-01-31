@@ -5,6 +5,7 @@ public class Ingredient : MonoBehaviour {
 
   public string IngredientName;
   public Color SoupColor;
+  public GameObject WinningSound;
 
   private GameObject cauldron;
   private GameObject soup;
@@ -22,8 +23,10 @@ public class Ingredient : MonoBehaviour {
         soup.GetComponent<SoupColor>().NextColor = SoupColor;
         Destroy(gameObject);
       } else if (other.gameObject.tag == "Enemy") {
-        if (!GetComponent<Rigidbody>().isKinematic)
+        if (!GetComponent<Rigidbody>().isKinematic) {
           other.gameObject.GetComponent<Enemy>().OnHit();
+          WinningSound.GetComponent<AudioSource>().Play();
+        }
       } else if (other.gameObject.tag == "Floor") {
         Destroy(gameObject);
       }

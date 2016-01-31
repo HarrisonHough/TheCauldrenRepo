@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
 			level = 1;
 			SceneManager.LoadScene("Title");
 		} else {
-			
+
 		}
 	}
 
