@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour {
 	public float distanceToPlayerForDeath = 1f;
 	public GameObject player;
 	public GameObject DeadEnemyPrefab;
+	public GameObject LoseSound;
 
 	public bool alive = true;
 	public float speed;
@@ -35,7 +36,8 @@ public class Enemy : MonoBehaviour {
 				transform.position += transform.forward * speed * Time.deltaTime;
 			} else {
 				//Game over or injury..
-//uncomment				GameManager.SetGameOver(false);
+				// LoseSound.GetComponent<AudioSource>().Play();
+				GameManager.SetGameOver(false);
 			}
 		}
 	}
