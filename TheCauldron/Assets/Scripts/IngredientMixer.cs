@@ -73,9 +73,14 @@ public class IngredientMixer : MonoBehaviour {
   void GetClosestEnemy () {
     GameObject[] go = GameObject.FindGameObjectsWithTag("Enemy");
 
+		GameObject closestEnemy;
+		Vector3 position;
+
     foreach(GameObject obj in go) {
+			//TODO: find the closest enemy here
       Target = obj;
       return;
+			//if (obj.transform.position
     }
   }
 

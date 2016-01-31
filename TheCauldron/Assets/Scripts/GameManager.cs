@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
 	public static bool wonLevel = false;
 	public GameObject room;
 	// sound effects: public GameObject ;
+	public float difficulty = 0f;
 
 	void Start() {
 	}
@@ -23,6 +24,13 @@ public class GameManager : MonoBehaviour {
 		} else {
 			
 		}
+	}
+
+	void Update() {
+		//update difficulty depending on how many enemies on scene
+		int numOfEnemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
+
+		difficulty = numOfEnemies / 15f;
 	}
 
 }
