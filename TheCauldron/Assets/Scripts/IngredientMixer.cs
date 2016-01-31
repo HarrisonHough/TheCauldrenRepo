@@ -118,4 +118,8 @@ public class IngredientMixer : MonoBehaviour {
 
     Projectiles.Clear();
 	}
+
+	public GameObject[] GetAllEnemies() {
+		return GameObject.FindGameObjectsWithTag("Enemy");
+	}
 }
