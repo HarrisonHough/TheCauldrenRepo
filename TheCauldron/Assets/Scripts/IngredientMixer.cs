@@ -19,9 +19,7 @@ public class IngredientMixer : MonoBehaviour {
   public ParticleSystem FlashySmoke;
   public ParticleSystem MagicalSmoke;
 
-  // DUMMY: Ingredient tracker
   private ArrayList ingredients;
-
   private ArrayList Projectiles;
 
 	// Use this for initialization
@@ -32,6 +30,7 @@ public class IngredientMixer : MonoBehaviour {
 
   public void AddIngredient (string ingredient) {
     ingredients.Add(ingredient);
+    GetComponent<AudioSource>().Play();
     MixIngredient();
     MagicalSmoke.Play();
   }
