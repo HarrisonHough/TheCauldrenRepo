@@ -18,8 +18,10 @@ public class GameManager : MonoBehaviour {
 		gameOver = true;
 		wonLevel = won;
 		if (!won) {
+			level = 1;
 			SceneManager.LoadScene("Title");
-//			GameObject.Find("Player").GetComponent<CardboardInteract>().gameOverText.gameObject.SetActive(true);
+		} else {
+			
 		}
 	}
 

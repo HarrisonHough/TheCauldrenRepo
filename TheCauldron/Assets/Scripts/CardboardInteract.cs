@@ -14,6 +14,8 @@ public class CardboardInteract : MonoBehaviour {
 	public GameObject creditsItemButton;
 	public Text creditsItemText;
 	public Text gameOverText;
+	public Text waveText;
+
 	GameObject[] items;
 	bool holdingItem;
 	GameObject itemHeld;
@@ -21,6 +23,9 @@ public class CardboardInteract : MonoBehaviour {
 	float distance = 1;
 	float smooth = 4;
 	float turnspeed = 1;
+	bool waitingForNextWave = false;
+	float timeToWaitForNextWave = 3f;
+	float timeWon;
 
 	// Use this for initialization
 	void Start () {
@@ -138,6 +143,28 @@ public class CardboardInteract : MonoBehaviour {
 		if (SceneManager.GetActiveScene().name.Equals("Title") && GameManager.gameOver) {
 			gameOverText.gameObject.SetActive(true);
 			GameManager.gameOver = false;
+		}
+
+		if (SceneManager.GetActiveScene().name.Equals("Main") && GameManager.gameOver) {
+			//you've won..
+			waveText.gameObject.SetActive(true);
+			waitForNextWave();
+		}
+	}
+
+	void waitForNextWave() {
+		if (!waitingForNextWave) {
+			waitingForNextWave = true;
+			timeWon = Time.time;
+		} else {
+			if (Time.time >= timeWon + timeToWaitForNextWave) {
+				waitingForNextWave = false;
+				waveText.gameObject.SetActive(false);
+				GameManager.gameOver = false;
+				GameManager.wonLevel = false;
+				GameManager.level++;
+				//inventory loader.
+			}
 		}
 	}
 }
