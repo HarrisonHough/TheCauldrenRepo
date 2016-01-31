@@ -116,6 +116,7 @@ public class CardboardInteract : MonoBehaviour {
 							if (hit.collider.gameObject == item) {
 								holdingItem = true;
 								itemHeld = item;
+								itemHeld.gameObject.GetComponent<Rigidbody>().isKinematic = true;
 								timeInteracted = Time.time;
 							}
 						}

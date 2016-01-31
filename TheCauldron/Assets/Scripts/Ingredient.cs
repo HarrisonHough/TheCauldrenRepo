@@ -24,6 +24,8 @@ public class Ingredient : MonoBehaviour {
       } else if (other.gameObject.tag == "Enemy") {
         if (!GetComponent<Rigidbody>().isKinematic)
           other.gameObject.GetComponent<Enemy>().OnHit();
+      } else if (other.gameObject.tag == "Floor") {
+        Destroy(gameObject);
       }
     }
   }
