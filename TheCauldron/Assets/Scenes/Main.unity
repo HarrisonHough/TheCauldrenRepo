@@ -6542,6 +6542,10 @@ Prefab:
       propertyPath: inventoryLoader
       value: 
       objectReference: {fileID: 355327815}
+    - target: {fileID: 11430210, guid: 11eb092e0f68b492e8d6b1e5a993bb4b, type: 2}
+      propertyPath: enemyLoader
+      value: 
+      objectReference: {fileID: 1568776378}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 11eb092e0f68b492e8d6b1e5a993bb4b, type: 2}
   m_IsPrefabParent: 0
