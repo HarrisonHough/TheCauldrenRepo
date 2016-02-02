@@ -47,6 +47,7 @@ public class EnemyLoader : MonoBehaviour {
 	}
 
 	void SetEnemiesToSpawnThisLevel() {
+		Debug.Log("enemies to spawn this level: " + GameManager.level);
 		enemiesToSpawnThisLevel = GameManager.level;
 	}
 

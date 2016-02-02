@@ -230,6 +230,7 @@ public class CardboardInteract : MonoBehaviour {
 			timeWon = Time.time;
 		} else {
 			if (Time.time >= timeWon + timeToWaitForNextWave) {
+				Debug.Log("setting up new level..");
 				waitingForNextWave = false;
 				waveText.gameObject.SetActive(false);
 				GameManager.gameOver = false;
