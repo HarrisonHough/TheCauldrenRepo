@@ -28,7 +28,10 @@ public class EnemyLoader : MonoBehaviour {
 		if (!GameManager.gameOver && enemiesToSpawnThisLevel > 0) {
 			if (Time.time >= timeFromLastSpawn + timeToNextSpawn) {
 				// spawn a new monster, regenerate the time to next spawn..
-				Instantiate(enemyPrefab, this.transform.position, Quaternion.identity);
+				GameObject enemy = Instantiate(enemyPrefab, this.transform.position, Quaternion.identity) as GameObject;
+				if (GameManager.soundEffectsMuted) {
+					enemy.GetComponent<AudioSource>().mute = true;
+				}
 				enemiesToSpawnThisLevel--;
 				GenerateTimeToNextSpawn();
 				timeFromLastSpawn = Time.time;

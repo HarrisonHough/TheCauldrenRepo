@@ -49,17 +49,19 @@ public class CardboardInteract : MonoBehaviour {
 		if (SceneManager.GetActiveScene().name.Equals("Title") && GameManager.gameOver) {
 			//show the game over text when you move to the title screen from game over
 			gameOverText.gameObject.SetActive(true);
-			GameManager.gameOver = false;
+
+			Debug.Log("game over... music muted? " + GameManager.musicMuted + " sfx muted? " + GameManager.soundEffectsMuted); 
 			//also check the fonts for the music and sound effects.. they reset on scene load
-			if (GameObject.Find("Room").GetComponent<AudioSource>().mute) {
+			if (GameManager.musicMuted) {
 				//disable..
 				musicItemText.fontStyle = FontStyle.Italic;
 				musicItemText.color = new Color(28/255f, 28/255f, 28/255f, 90/255f); //1C1C1CFF
 			}
-			if (GameObject.Find("Cauldron").GetComponent<AudioSource>().mute) {
+			if (GameManager.soundEffectsMuted) {
 				soundEffectsItemText.fontStyle = FontStyle.Italic;
 				soundEffectsItemText.color = new Color(28/255f, 28/255f, 28/255f, 90/255f); //1C1C1CFF
 			}
+			GameManager.gameOver = false;
 		}
 
 		if (SceneManager.GetActiveScene().name.Equals("Main") && GameManager.gameOver) {
@@ -218,10 +220,10 @@ public class CardboardInteract : MonoBehaviour {
 		} /*else if (GameObject.Find("PaperMenu") == null) {// end of gameover
 			gameOverText.gameObject.SetActive(true);
 		}*/
-		if (SceneManager.GetActiveScene().name.Equals("Title") && GameManager.gameOver) {
+		/*if (SceneManager.GetActiveScene().name.Equals("Title") && GameManager.gameOver) {
 			gameOverText.gameObject.SetActive(true);
 			GameManager.gameOver = false;
-		}
+		}*/
 
 		if (SceneManager.GetActiveScene().name.Equals("Main") && GameManager.gameOver) {
 			//you've won..
