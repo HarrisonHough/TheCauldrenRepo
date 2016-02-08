@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
 	public static int level = 1;
 	public static bool wonLevel = false;
 	public GameObject room;
-	public static bool playMusic = true;
+	public static bool musicMuted = false;
 	public static bool playSoundEffects = true;
 
 	// sound effects: public GameObject ;
@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void OnLevelWasLoaded() {
-		room.GetComponent<AudioSource>().mute = playMusic;
+		room.GetComponent<AudioSource>().mute = musicMuted;
 	}
 
 	public static void SetGameOver(bool won) {

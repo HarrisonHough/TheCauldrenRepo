@@ -32,6 +32,11 @@ public class CardboardInteract : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		items = GameObject.FindGameObjectsWithTag("Item");
+		foreach (EnemyLoader el in enemyLoader) {
+			if (!el.name.Equals("EnemySpawnerN")) {
+				el.gameObject.SetActive(false);
+			}
+		}
 	}
 
 	// Update is called once per frame
@@ -120,7 +125,7 @@ public class CardboardInteract : MonoBehaviour {
 							musicItemText.color = new Color(28/255f, 28/255f, 28/255f, 90/255f); //1C1C1CFF
 							Debug.Log("disable");
 							GameObject.Find("Room").GetComponent<AudioSource>().mute = true;
-							GameManager.playMusic = true;
+							GameManager.musicMuted = true;
 							//GameManager.musicEnabled(false);
 							//disable music
 						} else {
@@ -129,7 +134,7 @@ public class CardboardInteract : MonoBehaviour {
 							musicItemText.color = new Color(28/255f, 28/255f, 28/255f, 1); //1C1C1CFF
 							Debug.Log("enable");
 							GameObject.Find("Room").GetComponent<AudioSource>().mute = false;
-							GameManager.playMusic = false;
+							GameManager.musicMuted = false;
 							//GameManager.musicEnabled(true);
 							//enable music..
 						}
@@ -240,7 +245,18 @@ public class CardboardInteract : MonoBehaviour {
 				inventoryLoader.Spawn();
 				items = GameObject.FindGameObjectsWithTag("Item");
 				foreach (EnemyLoader el in enemyLoader) {
-					el.NewGame();
+					if (GameManager.level == 1) {
+						if (el.name.Equals("EnemySpawnerN")) {
+							el.gameObject.SetActive(true);
+						} else {
+							el.gameObject.SetActive(false);
+						}
+					} else {
+						el.gameObject.SetActive(true);
+					}
+					if (el.gameObject.activeSelf) {
+						el.NewGame();
+					}
 				}
 			}
 		}
