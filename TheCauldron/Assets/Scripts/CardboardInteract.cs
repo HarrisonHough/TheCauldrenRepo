@@ -56,11 +56,10 @@ public class CardboardInteract : MonoBehaviour {
 				musicItemText.fontStyle = FontStyle.Italic;
 				musicItemText.color = new Color(28/255f, 28/255f, 28/255f, 90/255f); //1C1C1CFF
 			}
-			//TODO: mute sound effects
-			/*if (!playSoundEffects) {
+			if (GameObject.Find("Cauldron").GetComponent<AudioSource>().mute) {
 				soundEffectsItemText.fontStyle = FontStyle.Italic;
 				soundEffectsItemText.color = new Color(28/255f, 28/255f, 28/255f, 90/255f); //1C1C1CFF
-			}*/
+			}
 		}
 
 		if (SceneManager.GetActiveScene().name.Equals("Main") && GameManager.gameOver) {
@@ -148,12 +147,14 @@ public class CardboardInteract : MonoBehaviour {
 							soundEffectsItemText.color = new Color(28/255f, 28/255f, 28/255f, 90/255f); //1C1C1CFF
 							Debug.Log("disable");
 							//disable sound effects
+							GameManager.soundEffectsMuted = true;
 						} else {
 							//enable..
 							soundEffectsItemText.fontStyle = FontStyle.Normal;
 							soundEffectsItemText.color = new Color(28/255f, 28/255f, 28/255f, 1); //1C1C1CFF
 							Debug.Log("enable");
 							//enable sound effects..
+							GameManager.soundEffectsMuted = false;
 						}
 						//TODO: do something for sound effects..
 					} else if (hit.collider.gameObject == creditsItemButton && Time.time > timeInteracted + 0.3f) {

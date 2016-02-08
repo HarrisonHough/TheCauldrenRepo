@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour {
 	public static bool wonLevel = false;
 	public GameObject room;
 	public static bool musicMuted = false;
-	public static bool playSoundEffects = true;
+	public static bool soundEffectsMuted = false;
 
 	// sound effects: public GameObject ;
 	public float difficulty = 0f;
@@ -20,6 +20,13 @@ public class GameManager : MonoBehaviour {
 
 	void OnLevelWasLoaded() {
 		room.GetComponent<AudioSource>().mute = musicMuted;
+		ToggleSoundEffects(soundEffectsMuted);
+	}
+
+	public void ToggleSoundEffects(bool muted) {
+		Debug.Log("toggle sound effects, muted? " + muted);
+		GameObject.Find("Cauldron").GetComponent<AudioSource>().mute = muted;
+		soundEffectsMuted = muted;
 	}
 
 	public static void SetGameOver(bool won) {
@@ -38,6 +45,9 @@ public class GameManager : MonoBehaviour {
 		int numOfEnemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
 
 		difficulty = numOfEnemies / 15f;
+		if (GameObject.Find("Cauldron").GetComponent<AudioSource>().mute != soundEffectsMuted) {
+			ToggleSoundEffects(soundEffectsMuted);
+		}
 	}
 
 }
