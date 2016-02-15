@@ -20,8 +20,12 @@ public class GameManager : MonoBehaviour {
 	private AudioSource musicTwo;
 	private AudioSource musicThree;
 
+	public static AudioSource cauldronAmbienceSfx;
+	public static AudioSource[] cauldronAddItemSfx;
+
 
 	void Start() {
+		Debug.Log("start method");
 		AudioSource[] audioSources = room.GetComponents<AudioSource>();
 		foreach (AudioSource source in audioSources) {
 			if (source.clip.name.Equals("witch music one")) {
@@ -32,10 +36,34 @@ public class GameManager : MonoBehaviour {
 				musicThree = source;
 			}
 		}
+
+		AudioSource[] cauldronSfxSources = GameObject.Find("Cauldron").GetComponents<AudioSource>();
+		cauldronAddItemSfx = new AudioSource[5];
+		foreach (AudioSource source in cauldronSfxSources) {
+			if (source.clip.name.Equals("Cauldren_Ambience_loop")) {
+				cauldronAmbienceSfx = source;
+			} else if (source.clip.name.Equals("Cauldren_ItemAdd_1")) {
+				cauldronAddItemSfx[0] = source;
+			} else if (source.clip.name.Equals("Cauldren_ItemAdd_2")) {
+				cauldronAddItemSfx[1] = source;
+			} else if (source.clip.name.Equals("Cauldren_ItemAdd_3")) {
+				cauldronAddItemSfx[2] = source;
+			} else if (source.clip.name.Equals("Cauldren_ItemAdd_4")) {
+				cauldronAddItemSfx[3] = source;
+			} else if (source.clip.name.Equals("Cauldren_ItemAdd_5")) {
+				cauldronAddItemSfx[4] = source;
+			}
+		}
+	}
+
+	public static void PlayRandomAddItemSfx() {
+		int itemAdd = Random.Range(0, 5);
+		if (!soundEffectsMuted) {
+			cauldronAddItemSfx[itemAdd].Play();
+		}
 	}
 
 	void OnLevelWasLoaded() {
-		//room.GetComponent<AudioSource>().mute = musicMuted;
 		foreach (AudioSource source in room.GetComponents<AudioSource>()) {
 			source.mute = musicMuted;
 		}
@@ -43,8 +71,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void ToggleSoundEffects(bool muted) {
-		Debug.Log("toggle sound effects, muted? " + muted);
-		GameObject.Find("Cauldron").GetComponent<AudioSource>().mute = muted;
+		cauldronAmbienceSfx.mute = muted;
 		soundEffectsMuted = muted;
 	}
 
