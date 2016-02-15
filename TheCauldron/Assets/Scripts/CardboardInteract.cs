@@ -49,7 +49,7 @@ public class CardboardInteract : MonoBehaviour {
 		if (SceneManager.GetActiveScene().name.Equals("Title") && GameManager.gameOver) {
 			//show the game over text when you move to the title screen from game over
 			gameOverText.gameObject.SetActive(true);
-
+			GameManager.PlayRandomWitchDeath();
 			Debug.Log("game over... music muted? " + GameManager.musicMuted + " sfx muted? " + GameManager.soundEffectsMuted); 
 			//also check the fonts for the music and sound effects.. they reset on scene load
 			if (GameManager.musicMuted) {

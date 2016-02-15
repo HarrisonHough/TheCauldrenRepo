@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour {
 	private static AudioSource levelCompleteSfx;
 
 	private static AudioSource[] witchCackleSfx;
+	private static AudioSource[] witchDeathSfx;
 
 
 	void Start() {
@@ -68,6 +69,7 @@ public class GameManager : MonoBehaviour {
 
 		AudioSource[] playerSfxSources = GameObject.Find("Player").GetComponents<AudioSource>();
 		witchCackleSfx = new AudioSource[3];
+		witchDeathSfx = new AudioSource[3];
 		foreach (AudioSource source in playerSfxSources) {
 			if (source.clip.name.Equals("Cauldren_Witch_Cackle_1")) {
 				witchCackleSfx[0] = source;
@@ -75,7 +77,20 @@ public class GameManager : MonoBehaviour {
 				witchCackleSfx[1] = source;
 			} else if (source.clip.name.Equals("Cauldren_Witch_Cackle_3")) {
 				witchCackleSfx[2] = source;
+			} else if (source.clip.name.Equals("Cauldren_Witch_Die_1")) {
+				witchDeathSfx[0] = source;
+			} else if (source.clip.name.Equals("Cauldren_Witch_Die_2")) {
+				witchDeathSfx[1] = source;
+			} else if (source.clip.name.Equals("Cauldren_Witch_Die_3")) {
+				witchDeathSfx[2] = source;
 			}
+		}
+	}
+
+	public static void PlayRandomWitchDeath() {
+		int witchDeath = Random.Range(0, 3);
+		if (!soundEffectsMuted) {
+			witchDeathSfx[witchDeath].Play();
 		}
 	}
 
