@@ -15,11 +15,30 @@ public class GameManager : MonoBehaviour {
 	// sound effects: public GameObject ;
 	public float difficulty = 0f;
 
+	private float prevDifficulty = 0f;
+	private AudioSource musicOne;
+	private AudioSource musicTwo;
+	private AudioSource musicThree;
+
+
 	void Start() {
+		AudioSource[] audioSources = room.GetComponents<AudioSource>();
+		foreach (AudioSource source in audioSources) {
+			if (source.clip.name.Equals("witch music one")) {
+				musicOne = source;
+			} else if (source.clip.name.Equals("witch music two")) {
+				musicTwo = source;
+			} else if (source.clip.name.Equals("witch music three")) {
+				musicThree = source;
+			}
+		}
 	}
 
 	void OnLevelWasLoaded() {
-		room.GetComponent<AudioSource>().mute = musicMuted;
+		//room.GetComponent<AudioSource>().mute = musicMuted;
+		foreach (AudioSource source in room.GetComponents<AudioSource>()) {
+			source.mute = musicMuted;
+		}
 		ToggleSoundEffects(soundEffectsMuted);
 	}
 
@@ -46,11 +65,30 @@ public class GameManager : MonoBehaviour {
 
 		if (numOfEnemies == 0) {
 			difficulty = 0f;
-		} else if (numOfEnemies > 2 && numOfEnemies <= 4) {
+			if (prevDifficulty != difficulty) {
+				prevDifficulty = difficulty;
+				musicTwo.Stop();
+				musicThree.Stop();
+				musicOne.Play();
+			}
+		} else if (numOfEnemies > 2 && numOfEnemies < 4) {
 			difficulty = 0.5f;
-		} else if (numOfEnemies > 4) {
+			if (prevDifficulty != difficulty) {
+				prevDifficulty = difficulty;
+				musicTwo.Play();
+				musicThree.Stop();
+				musicOne.Stop();
+			}
+		} else if (numOfEnemies >= 4) {
 			difficulty = 1f;
+			if (prevDifficulty != difficulty) {
+				prevDifficulty = difficulty;
+				musicTwo.Stop();
+				musicThree.Play();
+				musicOne.Stop();
+			}
 		}
+
 		if (GameObject.Find("Cauldron").GetComponent<AudioSource>().mute != soundEffectsMuted) {
 			ToggleSoundEffects(soundEffectsMuted);
 		}
