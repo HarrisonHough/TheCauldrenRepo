@@ -19,6 +19,7 @@ public class Menu : MonoBehaviour {
 			//options screen
 			Debug.Log("Options");
 			paperMenu.SetActive(true);
+			GameManager.PlayOpenScrollSfx();
 		}
 	}
 	

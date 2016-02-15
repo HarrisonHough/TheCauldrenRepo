@@ -21,7 +21,9 @@ public class GameManager : MonoBehaviour {
 	private AudioSource musicThree;
 
 	public static AudioSource cauldronAmbienceSfx;
+	public static AudioSource cauldronBubblingSfx;
 	public static AudioSource[] cauldronAddItemSfx;
+	private static AudioSource cauldronScrollSfx;
 
 
 	void Start() {
@@ -52,6 +54,10 @@ public class GameManager : MonoBehaviour {
 				cauldronAddItemSfx[3] = source;
 			} else if (source.clip.name.Equals("Cauldren_ItemAdd_5")) {
 				cauldronAddItemSfx[4] = source;
+			} else if (source.clip.name.Equals("Cauldren_Scroll")) {
+				cauldronScrollSfx = source;
+			} else if (source.clip.name.Equals("Cauldren_bubbling_loop")) {
+				cauldronBubblingSfx = source;
 			}
 		}
 	}
@@ -60,6 +66,12 @@ public class GameManager : MonoBehaviour {
 		int itemAdd = Random.Range(0, 5);
 		if (!soundEffectsMuted) {
 			cauldronAddItemSfx[itemAdd].Play();
+		}
+	}
+
+	public static void PlayOpenScrollSfx() {
+		if (!soundEffectsMuted) {
+			cauldronScrollSfx.Play();
 		}
 	}
 
@@ -72,6 +84,11 @@ public class GameManager : MonoBehaviour {
 
 	public void ToggleSoundEffects(bool muted) {
 		cauldronAmbienceSfx.mute = muted;
+		cauldronBubblingSfx.mute = muted;
+		cauldronScrollSfx.mute = muted;
+		foreach (AudioSource source in cauldronAddItemSfx) {
+			source.mute = muted;
+		}
 		soundEffectsMuted = muted;
 	}
 
