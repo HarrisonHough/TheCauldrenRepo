@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour {
 	public static AudioSource cauldronBubblingSfx;
 	public static AudioSource[] cauldronAddItemSfx;
 	private static AudioSource cauldronScrollSfx;
+	private static AudioSource levelCompleteSfx;
 
 
 	void Start() {
@@ -58,6 +59,8 @@ public class GameManager : MonoBehaviour {
 				cauldronScrollSfx = source;
 			} else if (source.clip.name.Equals("Cauldren_bubbling_loop")) {
 				cauldronBubblingSfx = source;
+			} else if (source.clip.name.Equals("Cauldren_UI_1")) {
+				levelCompleteSfx = source;
 			}
 		}
 	}
@@ -72,6 +75,12 @@ public class GameManager : MonoBehaviour {
 	public static void PlayOpenScrollSfx() {
 		if (!soundEffectsMuted) {
 			cauldronScrollSfx.Play();
+		}
+	}
+
+	public static void PlayLevelCompleteSfx() {
+		if (!soundEffectsMuted) {
+			levelCompleteSfx.Play();
 		}
 	}
 
