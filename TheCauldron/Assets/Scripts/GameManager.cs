@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour {
 	private static AudioSource cauldronScrollSfx;
 	private static AudioSource levelCompleteSfx;
 
+	private static AudioSource[] witchCackleSfx;
+
 
 	void Start() {
 		Debug.Log("start method");
@@ -63,6 +65,18 @@ public class GameManager : MonoBehaviour {
 				levelCompleteSfx = source;
 			}
 		}
+
+		AudioSource[] playerSfxSources = GameObject.Find("Player").GetComponents<AudioSource>();
+		witchCackleSfx = new AudioSource[3];
+		foreach (AudioSource source in playerSfxSources) {
+			if (source.clip.name.Equals("Cauldren_Witch_Cackle_1")) {
+				witchCackleSfx[0] = source;
+			} else if (source.clip.name.Equals("Cauldren_Witch_Cackle_2")) {
+				witchCackleSfx[1] = source;
+			} else if (source.clip.name.Equals("Cauldren_Witch_Cackle_3")) {
+				witchCackleSfx[2] = source;
+			}
+		}
 	}
 
 	public static void PlayRandomAddItemSfx() {
@@ -75,6 +89,13 @@ public class GameManager : MonoBehaviour {
 	public static void PlayOpenScrollSfx() {
 		if (!soundEffectsMuted) {
 			cauldronScrollSfx.Play();
+		}
+	}
+
+	public static void PlayRandomWitchCackle() {
+		int witchCackle = Random.Range(0, 3);
+		if (!soundEffectsMuted) {
+			witchCackleSfx[witchCackle].Play();
 		}
 	}
 

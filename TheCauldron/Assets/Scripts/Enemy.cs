@@ -2,7 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour {
+public class Enemy : MonoBehaviour
+{
 
 	//should randomize the speed..
 	//public float speed = 2f;
@@ -14,21 +15,25 @@ public class Enemy : MonoBehaviour {
 	public bool alive = true;
 	public float speed;
 
-	void Start() {
+	void Start()
+	{
 		speed = GenerateSpeed(GameManager.level);
 	}
 
-	public void OnHit () {
-    Instantiate(DeadEnemyPrefab, transform.position, transform.rotation);
-    if (EnemyLoader.enemiesToSpawnThisLevel <= 0 && GameObject.FindGameObjectsWithTag("Enemy").Length <= 1) {
-      //you won!
-      GameManager.SetGameOver(true);
-    }
-    Destroy(gameObject);
+	public void OnHit()
+	{
+		Instantiate(DeadEnemyPrefab, transform.position, transform.rotation);
+		if (EnemyLoader.enemiesToSpawnThisLevel <= 0 && GameObject.FindGameObjectsWithTag("Enemy").Length <= 1) {
+			//you won!
+			GameManager.SetGameOver(true);
+			GameManager.PlayRandomWitchCackle();
+		}
+		Destroy(gameObject);
 	}
 
 	// Update is called once per frame
-	public void Update () {
+	public void Update()
+	{
 		if (!GameManager.gameOver) {
 			transform.LookAt(player.transform.position);
 			if (Vector3.Distance(player.transform.position, this.transform.position) >= distanceToPlayerForDeath) {
@@ -41,7 +46,8 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 
-	float GenerateSpeed(int level) {
+	float GenerateSpeed(int level)
+	{
 		//level 1 between 0.5 to 2
 		if (level == 1) {
 			return Random.Range(0.5f, 2f);
