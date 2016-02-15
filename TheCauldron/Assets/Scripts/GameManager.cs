@@ -44,7 +44,13 @@ public class GameManager : MonoBehaviour {
 		//update difficulty depending on how many enemies on scene
 		int numOfEnemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
 
-		difficulty = numOfEnemies / 15f;
+		if (numOfEnemies == 0) {
+			difficulty = 0f;
+		} else if (numOfEnemies > 2 && numOfEnemies <= 4) {
+			difficulty = 0.5f;
+		} else if (numOfEnemies > 4) {
+			difficulty = 1f;
+		}
 		if (GameObject.Find("Cauldron").GetComponent<AudioSource>().mute != soundEffectsMuted) {
 			ToggleSoundEffects(soundEffectsMuted);
 		}
