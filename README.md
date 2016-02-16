@@ -5,6 +5,8 @@ The melbggj16 branch is how far we managed to develop in the weekend. The master
 ## Description
 You are a Witch armed with a cauldron facing a swarm of ghosts. Brew up concoctions to fend them off and survive for as long as possible.
 
+Developed for VR, using Oculus Rift and Google Cardboard (for iOS and Android)
+
 See the game page here: http://globalgamejam.org/2016/games/cauldron
 
 ## Contributing
@@ -18,4 +20,4 @@ See the game page here: http://globalgamejam.org/2016/games/cauldron
 Developed by Harrison Hough, Jacqui Hyslop and Xavier Ho. Music and Sound effects by Sally Kellaway and Tamara Violet Partridge
 
 ## License
-The GGJ is open source, hardware & software agnostic and all projects are protected under a Creative Commons license.
+The GGJ is open source, hardware & software agnostic and all projects are protected under a Creative Commons license. See more here: http://globalgamejam.org/faq 
