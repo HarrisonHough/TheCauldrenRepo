@@ -17,8 +17,21 @@ public class Ingredient : MonoBehaviour
 		soup = GameObject.Find("Soup");
 	}
 
+	void OnCollisionEnter(Collision collision) {
+		Debug.Log("collision! " + collision.collider.name);
+		if (collision.collider.tag.Equals("Floor")) {
+			Debug.Log("floor!");
+			GameManager.PlayRandomFloorDropSfx();
+		} else if (collision.collider.tag.Equals("Table")) {
+			Debug.Log("table!");
+			GameManager.PlayTableDropSfx();
+		}
+	}
+
+
 	void OnTriggerEnter(Collider other)
 	{
+		Debug.Log("triggered.." + other.name);
 		if (!GameManager.gameOver) {
 			if (other.gameObject.tag == "IngredientHit") {
 				cauldron.GetComponent<IngredientMixer>().AddIngredient(IngredientName);
@@ -29,9 +42,9 @@ public class Ingredient : MonoBehaviour
 					other.gameObject.GetComponent<Enemy>().OnHit();
 					GameManager.PlayLevelCompleteSfx();
 				}
-			} else if (other.gameObject.tag == "Floor") {
+			} /*else if (other.gameObject.tag == "Floor") {
 				Destroy(gameObject);
-			}
+			}*/
 		}
 	}
 

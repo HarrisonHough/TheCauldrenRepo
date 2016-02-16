@@ -8,6 +8,7 @@ TagManager:
   - IngredientHit
   - Enemy
   - Floor
+  - Table
   layers:
   - Default
   - TransparentFX

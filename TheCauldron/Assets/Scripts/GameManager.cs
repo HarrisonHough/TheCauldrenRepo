@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour {
 	private static AudioSource[] witchCackleSfx;
 	private static AudioSource[] witchDeathSfx;
 
+	private static AudioSource itemDropFloorSfx1, itemDropFloorSfx2, itemDropTableSfx;
+
 
 	void Start() {
 		Debug.Log("start method");
@@ -40,7 +42,13 @@ public class GameManager : MonoBehaviour {
 				musicTwo = source;
 			} else if (source.clip.name.Equals("witch music three")) {
 				musicThree = source;
-			}
+			} else if (source.clip.name.Equals("Cauldren_ItemDrop_1")) {
+				itemDropFloorSfx1 = source;
+			}  else if (source.clip.name.Equals("Cauldren_ItemDrop_2")) {
+				itemDropTableSfx = source;
+			}  else if (source.clip.name.Equals("Cauldren_ItemDrop_3")) {
+				itemDropFloorSfx2 = source;
+			} 
 		}
 
 		AudioSource[] cauldronSfxSources = GameObject.Find("Cauldron").GetComponents<AudioSource>();
@@ -83,6 +91,23 @@ public class GameManager : MonoBehaviour {
 				witchDeathSfx[1] = source;
 			} else if (source.clip.name.Equals("Cauldren_Witch_Die_3")) {
 				witchDeathSfx[2] = source;
+			}
+		}
+	}
+
+	public static void PlayTableDropSfx() {
+		if (!soundEffectsMuted) {
+			itemDropTableSfx.Play();
+		}
+	}
+
+	public static void PlayRandomFloorDropSfx() {
+		int floorRandom = Random.Range(0, 2);
+		if (!soundEffectsMuted) {
+			if (floorRandom == 0) {
+				itemDropFloorSfx1.Play();
+			} else {
+				itemDropFloorSfx2.Play();
 			}
 		}
 	}
