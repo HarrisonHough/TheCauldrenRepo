@@ -1,5 +1,3 @@
-<snippet>
-  <content><![CDATA[
 # The Cauldron
 The Cauldron was created for the 2016 Melbourne Global Game Jam. 
 The melbggj16 branch is how far we managed to develop in the weekend. The master branch will be to show the current release (iOS, Android, Oculus Rift). The develop branch is where we have our current development.
@@ -21,5 +19,3 @@ Developed by Harrison Hough, Jacqui Hyslop and Xavier Ho. Music and Sound effect
 
 ## License
 The GGJ is open source, hardware & software agnostic and all projects are protected under a Creative Commons license.
-]]></content>
-  <tabTrigger>readme</tabTrigger>
