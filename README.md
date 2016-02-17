@@ -1,4 +1,4 @@
-![S01](https://raw.githubusercontent.com/HarrisonHough/TheCauldrenRepo/master/screenshots/screenshot01.png)
+![Featured Screenshot: Looking at the Cauldron](https://raw.githubusercontent.com/HarrisonHough/TheCauldrenRepo/master/screenshots/screenshot01.png)
 
 # The Cauldron
 The Cauldron was created for the 2016 Melbourne [Global Game Jam](http://globalgamejam.org/).
@@ -26,6 +26,6 @@ Developed by Harrison Hough, Jacqui Hyslop and Xavier Ho. Music and Sound effect
 The Cauldron is open source and protected under a [Creative Commons license](http://creativecommons.org/licenses/by-nc-sa/3.0/). See more here: http://globalgamejam.org/faq
 
 ## Screenshots
-![S02](https://raw.githubusercontent.com/HarrisonHough/TheCauldrenRepo/master/screenshots/screenshot02.png)
-![S03](https://raw.githubusercontent.com/HarrisonHough/TheCauldrenRepo/master/screenshots/screenshot03.png)
-![S04](https://raw.githubusercontent.com/HarrisonHough/TheCauldrenRepo/master/screenshots/screenshot04.png)
+![Levitating a tome](https://raw.githubusercontent.com/HarrisonHough/TheCauldrenRepo/master/screenshots/screenshot02.png)
+![Options menu](https://raw.githubusercontent.com/HarrisonHough/TheCauldrenRepo/master/screenshots/screenshot03.png)
+![Enemy ghost](https://raw.githubusercontent.com/HarrisonHough/TheCauldrenRepo/master/screenshots/screenshot04.png)
