@@ -1,3 +1,5 @@
+![S01](https://raw.githubusercontent.com/HarrisonHough/TheCauldrenRepo/master/screenshots/screenshot01.png)
+
 # The Cauldron
 The Cauldron was created for the 2016 Melbourne [Global Game Jam](http://globalgamejam.org/).
 The [`melbggj` branch](https://github.com/HarrisonHough/TheCauldrenRepo/tree/melbggj16) is how far we managed to develop in the weekend. The [1master1 branch](https://github.com/HarrisonHough/TheCauldrenRepo/tree/master) will be to show the current release (iOS, Android, Oculus Rift). The [`develop` branch](https://github.com/HarrisonHough/TheCauldrenRepo/tree/develop) is where we have our current development.
@@ -22,3 +24,8 @@ Developed by Harrison Hough, Jacqui Hyslop and Xavier Ho. Music and Sound effect
 
 ## License
 The Cauldron is open source and protected under a [Creative Commons license](http://creativecommons.org/licenses/by-nc-sa/3.0/). See more here: http://globalgamejam.org/faq
+
+## Screenshots
+![S02](https://raw.githubusercontent.com/HarrisonHough/TheCauldrenRepo/master/screenshots/screenshot02.png)
+![S03](https://raw.githubusercontent.com/HarrisonHough/TheCauldrenRepo/master/screenshots/screenshot03.png)
+![S04](https://raw.githubusercontent.com/HarrisonHough/TheCauldrenRepo/master/screenshots/screenshot04.png)
