@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour {
 
 	private static AudioSource itemDropFloorSfx1, itemDropFloorSfx2, itemDropTableSfx;
 
+	private static int enemiesKilled;
+
 
 	void Start() {
 		AudioSource[] audioSources = room.GetComponents<AudioSource>();
@@ -205,6 +207,18 @@ public class GameManager : MonoBehaviour {
 		if (GameObject.Find("Cauldron").GetComponent<AudioSource>().mute != soundEffectsMuted) {
 			ToggleSoundEffects(soundEffectsMuted);
 		}
+	}
+
+	public static int GetEnemiesKilled() {
+		return enemiesKilled;
+	}
+
+	public static void AddEnemiesKilled(int killed) {
+		enemiesKilled += killed;
+	}
+
+	public static void ResetEnemiesKilled() {
+		enemiesKilled = 0;
 	}
 
 }

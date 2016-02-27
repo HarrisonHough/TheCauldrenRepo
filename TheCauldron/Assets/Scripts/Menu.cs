@@ -15,6 +15,7 @@ public class Menu : MonoBehaviour {
 			//play screen
 			Debug.Log("Play game!");
 			SceneManager.LoadScene("Main");
+			GameManager.ResetEnemiesKilled();
 			//GameManager.PlayRandomWitchCackle();
 		} else if (action.Equals("Options")) {
 			//options screen
