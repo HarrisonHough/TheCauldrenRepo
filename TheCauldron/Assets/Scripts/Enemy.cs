@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
 
 	public void OnHit()
 	{
+		GameManager.AddEnemiesKilled(1);
 		Instantiate(DeadEnemyPrefab, transform.position, transform.rotation);
 		if (EnemyLoader.enemiesToSpawnThisLevel <= 0 && GameObject.FindGameObjectsWithTag("Enemy").Length <= 1) {
 			//you won!

@@ -14,6 +14,7 @@ public class CardboardInteract : MonoBehaviour {
 	public GameObject creditsItemButton;
 	public Text creditsItemText;
 	public Text gameOverText;
+	public Text enemiesKilledText;
 	public Text waveText;
 	public InventoryLoader inventoryLoader;
 	public EnemyLoader[] enemyLoader;
@@ -49,6 +50,9 @@ public class CardboardInteract : MonoBehaviour {
 		if (SceneManager.GetActiveScene().name.Equals("Title") && GameManager.gameOver) {
 			//show the game over text when you move to the title screen from game over
 			gameOverText.gameObject.SetActive(true);
+			enemiesKilledText.GetComponent<Text>().text = "Enemies killed:\n" + GameManager.GetEnemiesKilled();
+			enemiesKilledText.gameObject.SetActive(true);
+
 			GameManager.PlayRandomWitchDeath();
 			Debug.Log("game over... music muted? " + GameManager.musicMuted + " sfx muted? " + GameManager.soundEffectsMuted); 
 			//also check the fonts for the music and sound effects.. they reset on scene load
@@ -112,6 +116,7 @@ public class CardboardInteract : MonoBehaviour {
 	void InteractWithPaperMenu() {
 		if (GameObject.Find("PaperMenu") != null && !holdingItem) {
 			gameOverText.gameObject.SetActive(false);
+			enemiesKilledText.gameObject.SetActive(false);
 			if ((VRDevice.family != "oculus" && Cardboard.SDK.Triggered) || Input.GetMouseButtonUp(0)) {
 				Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 				RaycastHit hit;
