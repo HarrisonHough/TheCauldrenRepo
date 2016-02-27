@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour {
 
 
 	void Start() {
-		Debug.Log("start method");
 		AudioSource[] audioSources = room.GetComponents<AudioSource>();
 		foreach (AudioSource source in audioSources) {
 			if (source.clip.name.Equals("witch music one")) {

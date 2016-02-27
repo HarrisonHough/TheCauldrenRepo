@@ -21,17 +21,21 @@ public class IngredientMixer : MonoBehaviour
 	public ParticleSystem MagicalSmoke;
 
 	private ArrayList ingredients;
-	private ArrayList Projectiles;
+	private ArrayList projectiles;
 
 	// Use this for initialization
 	void Start()
 	{
 		ingredients = new ArrayList();
-		Projectiles = new ArrayList();
+		projectiles = new ArrayList();
 	}
 
 	public void AddIngredient(string ingredient)
 	{
+		if (ingredients == null && projectiles == null) {
+			ingredients = new ArrayList();
+			projectiles = new ArrayList();
+		}
 		ingredients.Add(ingredient);
 		//GetComponent<AudioSource>().Play();
 		GameManager.PlayRandomAddItemSfx();
@@ -84,7 +88,7 @@ public class IngredientMixer : MonoBehaviour
 		GameObject Projectile = (GameObject)Instantiate(ingredient, transform.position + new Vector3(0, 1, 0), transform.rotation * Quaternion.Euler(Random.Range(-10, 10), 0, 0));
 		Rigidbody rb = Projectile.GetComponent<Rigidbody>();
 		rb.isKinematic = false;
-		Projectiles.Add(Projectile);
+		projectiles.Add(Projectile);
 	}
 
 	GameObject[] GetClosestEnemies(int numberOfEnemies)
@@ -124,19 +128,19 @@ public class IngredientMixer : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		GameObject[] enemies = GetClosestEnemies(Projectiles.Count);
+		GameObject[] enemies = GetClosestEnemies(projectiles.Count);
 
-		for (int i = 0; i < Projectiles.Count; i++) {
+		for (int i = 0; i < projectiles.Count; i++) {
 			Vector3 targetPos;
 			if (i < enemies.Length) {
 				targetPos = enemies[i].transform.position;
 			} else {
 				targetPos = transform.position;
 			}
-			((GameObject)Projectiles[i]).GetComponent<Ingredient>().FlyTo(targetPos + new Vector3(0, 3, 0));
+			((GameObject)projectiles[i]).GetComponent<Ingredient>().FlyTo(targetPos + new Vector3(0, 3, 0));
 		}
 
-		Projectiles.Clear();
+		projectiles.Clear();
 	}
 
 	public GameObject[] GetAllEnemies()
