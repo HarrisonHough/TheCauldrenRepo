@@ -14,6 +14,7 @@ public class CardboardInteract : MonoBehaviour {
 	public GameObject creditsItemButton;
 	public Text creditsItemText;
 	public Text gameOverText;
+	public Text enemiesKilledText;
 	public Text waveText;
 	public InventoryLoader inventoryLoader;
 	public EnemyLoader[] enemyLoader;
@@ -32,6 +33,11 @@ public class CardboardInteract : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		items = GameObject.FindGameObjectsWithTag("Item");
+		foreach (EnemyLoader el in enemyLoader) {
+			if (!el.name.Equals("EnemySpawnerN")) {
+				el.gameObject.SetActive(false);
+			}
+		}
 	}
 
 	// Update is called once per frame
@@ -44,18 +50,22 @@ public class CardboardInteract : MonoBehaviour {
 		if (SceneManager.GetActiveScene().name.Equals("Title") && GameManager.gameOver) {
 			//show the game over text when you move to the title screen from game over
 			gameOverText.gameObject.SetActive(true);
-			GameManager.gameOver = false;
+			enemiesKilledText.GetComponent<Text>().text = "Enemies killed:\n" + GameManager.GetEnemiesKilled();
+			enemiesKilledText.gameObject.SetActive(true);
+
+			GameManager.PlayRandomWitchDeath();
+			Debug.Log("game over... music muted? " + GameManager.musicMuted + " sfx muted? " + GameManager.soundEffectsMuted); 
 			//also check the fonts for the music and sound effects.. they reset on scene load
-			if (GameObject.Find("Room").GetComponent<AudioSource>().mute) {
+			if (GameManager.musicMuted) {
 				//disable..
 				musicItemText.fontStyle = FontStyle.Italic;
 				musicItemText.color = new Color(28/255f, 28/255f, 28/255f, 90/255f); //1C1C1CFF
 			}
-			//TODO: mute sound effects
-			/*if (!playSoundEffects) {
+			if (GameManager.soundEffectsMuted) {
 				soundEffectsItemText.fontStyle = FontStyle.Italic;
 				soundEffectsItemText.color = new Color(28/255f, 28/255f, 28/255f, 90/255f); //1C1C1CFF
-			}*/
+			}
+			GameManager.gameOver = false;
 		}
 
 		if (SceneManager.GetActiveScene().name.Equals("Main") && GameManager.gameOver) {
@@ -106,6 +116,7 @@ public class CardboardInteract : MonoBehaviour {
 	void InteractWithPaperMenu() {
 		if (GameObject.Find("PaperMenu") != null && !holdingItem) {
 			gameOverText.gameObject.SetActive(false);
+			enemiesKilledText.gameObject.SetActive(false);
 			if ((VRDevice.family != "oculus" && Cardboard.SDK.Triggered) || Input.GetMouseButtonUp(0)) {
 				Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 				RaycastHit hit;
@@ -120,7 +131,7 @@ public class CardboardInteract : MonoBehaviour {
 							musicItemText.color = new Color(28/255f, 28/255f, 28/255f, 90/255f); //1C1C1CFF
 							Debug.Log("disable");
 							GameObject.Find("Room").GetComponent<AudioSource>().mute = true;
-							GameManager.playMusic = true;
+							GameManager.musicMuted = true;
 							//GameManager.musicEnabled(false);
 							//disable music
 						} else {
@@ -129,7 +140,7 @@ public class CardboardInteract : MonoBehaviour {
 							musicItemText.color = new Color(28/255f, 28/255f, 28/255f, 1); //1C1C1CFF
 							Debug.Log("enable");
 							GameObject.Find("Room").GetComponent<AudioSource>().mute = false;
-							GameManager.playMusic = false;
+							GameManager.musicMuted = false;
 							//GameManager.musicEnabled(true);
 							//enable music..
 						}
@@ -143,12 +154,14 @@ public class CardboardInteract : MonoBehaviour {
 							soundEffectsItemText.color = new Color(28/255f, 28/255f, 28/255f, 90/255f); //1C1C1CFF
 							Debug.Log("disable");
 							//disable sound effects
+							GameManager.soundEffectsMuted = true;
 						} else {
 							//enable..
 							soundEffectsItemText.fontStyle = FontStyle.Normal;
 							soundEffectsItemText.color = new Color(28/255f, 28/255f, 28/255f, 1); //1C1C1CFF
 							Debug.Log("enable");
 							//enable sound effects..
+							GameManager.soundEffectsMuted = false;
 						}
 						//TODO: do something for sound effects..
 					} else if (hit.collider.gameObject == creditsItemButton && Time.time > timeInteracted + 0.3f) {
@@ -212,10 +225,10 @@ public class CardboardInteract : MonoBehaviour {
 		} /*else if (GameObject.Find("PaperMenu") == null) {// end of gameover
 			gameOverText.gameObject.SetActive(true);
 		}*/
-		if (SceneManager.GetActiveScene().name.Equals("Title") && GameManager.gameOver) {
+		/*if (SceneManager.GetActiveScene().name.Equals("Title") && GameManager.gameOver) {
 			gameOverText.gameObject.SetActive(true);
 			GameManager.gameOver = false;
-		}
+		}*/
 
 		if (SceneManager.GetActiveScene().name.Equals("Main") && GameManager.gameOver) {
 			//you've won..
@@ -230,6 +243,7 @@ public class CardboardInteract : MonoBehaviour {
 			timeWon = Time.time;
 		} else {
 			if (Time.time >= timeWon + timeToWaitForNextWave) {
+				Debug.Log("setting up new level..");
 				waitingForNextWave = false;
 				waveText.gameObject.SetActive(false);
 				GameManager.gameOver = false;
@@ -239,7 +253,18 @@ public class CardboardInteract : MonoBehaviour {
 				inventoryLoader.Spawn();
 				items = GameObject.FindGameObjectsWithTag("Item");
 				foreach (EnemyLoader el in enemyLoader) {
-					el.NewGame();
+					if (GameManager.level == 1) {
+						if (el.name.Equals("EnemySpawnerN")) {
+							el.gameObject.SetActive(true);
+						} else {
+							el.gameObject.SetActive(false);
+						}
+					} else {
+						el.gameObject.SetActive(true);
+					}
+					if (el.gameObject.activeSelf) {
+						el.NewGame();
+					}
 				}
 			}
 		}

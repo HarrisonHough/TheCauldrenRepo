@@ -3427,6 +3427,10 @@ Prefab:
       propertyPath: SpawnLocation
       value: 
       objectReference: {fileID: 404276, guid: adb288b4cd4ed4f6f9868a228a8923db, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 181518}
