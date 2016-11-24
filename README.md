@@ -14,10 +14,11 @@ See the game page here: http://globalgamejam.org/2016/games/cauldron
 ## Contributing
 1. [Fork it!](https://github.com/HarrisonHough/TheCauldrenRepo/tree/develop#fork-destination-box)
 2. Switch to the `develop` branch: `git checkout develop`
-3. Create your feature branch: `git checkout -b my-new-feature`
-4. Commit your changes: `git commit -am 'Add some feature'`
-5. Push to the branch: `git push origin my-new-feature`
-6. Submit a [pull request](https://help.github.com/articles/proposing-changes-to-a-project-with-pull-requests/) :D
+3. Open it in Unity, download [Amplify Color](https://www.assetstore.unity3d.com/en/#!/content/1894) in the Asset Store.
+4. Create your feature branch: `git checkout -b my-new-feature`
+5. Commit your changes: `git commit -am 'Add some feature'`
+6. Push to the branch: `git push origin my-new-feature`
+7. Submit a [pull request](https://help.github.com/articles/proposing-changes-to-a-project-with-pull-requests/) :D
 
 ## Credits
 Developed by Harrison Hough, Jacqui Hyslop and Xavier Ho. Music and Sound effects by Sally Kellaway and Tamara Violet Partridge
