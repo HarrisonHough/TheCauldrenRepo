@@ -1,58 +1,87 @@
-﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class Enemy : MonoBehaviour
-{
+public class Enemy : MonoBehaviour {
 
-	//should randomize the speed..
-	//public float speed = 2f;
-	public float distanceToPlayerForDeath = 1f;
-	public GameObject player;
-	public GameObject DeadEnemyPrefab;
-	public GameObject LoseSound;
+    //should randomize the speed..
+    //public float speed = 2f;
+    // TODO remove this make spark function to check this
+    public float distanceToPlayerForDeath = 1f;
+    public GameObject player;
+    public GameObject DeadEnemyPrefab;
+    public GameObject LoseSound;
 
-	public bool alive = true;
-	public float speed;
+    public bool alive = true;
+    public float speed;
 
-	void Start()
-	{
-		speed = GenerateSpeed(GameManager.level);
-	}
+    private AudioSource audioSource;
+    // Use this for initialization
+    void Start () {
+        player = GameObject.FindGameObjectWithTag("Player");
+        audioSource = GetComponent<AudioSource>();
+        //set inactive as default
+        SetInactive();
+    }
 
-	public void OnHit()
-	{
-		GameManager.AddEnemiesKilled(1);
-		Instantiate(DeadEnemyPrefab, transform.position, transform.rotation);
-		if (EnemyLoader.enemiesToSpawnThisLevel <= 0 && GameObject.FindGameObjectsWithTag("Enemy").Length <= 1) {
-			//you won!
-			GameManager.SetGameOver(true);
-			GameManager.PlayRandomWitchCackle();
-		}
-		Destroy(gameObject);
-	}
+    public void SetInactive()
+    {
+        alive = false;
+        transform.position = new Vector3(0,-10,0);
+        GameManager.Instance.EnemyManager.UpdateClosestEnemy();
+        audioSource.Stop();
+    }
 
-	// Update is called once per frame
-	public void Update()
-	{
-		if (!GameManager.gameOver) {
-			transform.LookAt(player.transform.position);
-			if (Vector3.Distance(player.transform.position, this.transform.position) >= distanceToPlayerForDeath) {
-				//Move towards the character..
-				transform.position += transform.forward * speed * Time.deltaTime;
-			} else {
-				//Game over or injury..
-				GameManager.SetGameOver(false);
-			}
-		}
-	}
+    public void Restart()
+    {
+        alive = true;
+        speed = GenerateSpeed(GameManager.wavesComplete);
+        audioSource.Play();
+        StartCoroutine(MoveCoroutine());
+    }
 
-	float GenerateSpeed(int level)
-	{
-		//level 1 between 0.5 to 2
-		if (level == 1) {
-			return Random.Range(0.5f, 2f);
-		}
-		return Random.Range(2, 5);
-	}
+    IEnumerator MoveCoroutine()
+    {
+
+        // Look at player
+        transform.LookAt(player.transform.position);
+        while (alive)
+        {
+            if (!GameManager.gameOver)
+            {
+                
+                if (Vector3.Distance(player.transform.position, this.transform.position) >= distanceToPlayerForDeath)
+                {
+                    //Move towards the character..
+                    transform.position += transform.forward * speed * Time.deltaTime;
+                }
+                else
+                {
+                    //Enemy got you Game over
+                    GameManager.Instance.SetGameOver(false);
+                    SetInactive();
+                }
+            }
+            yield return null;
+        }
+
+    }
+
+    public void OnHit()
+    {
+        GameManager.Instance.EnemyManager.EnemyKilled(transform.position, transform.rotation);
+
+        SetInactive();
+    }
+
+
+    private float GenerateSpeed(int level)
+    {
+        //level 1 between 0.5 to 2
+        if (level == 1)
+        {
+            return Random.Range(0.5f, 2f);
+        }
+        return Random.Range(2, 5);
+    }
 }
