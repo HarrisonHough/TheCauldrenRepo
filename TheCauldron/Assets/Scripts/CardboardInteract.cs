@@ -1,272 +1,104 @@
-﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.VR;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class CardboardInteract : MonoBehaviour {
 
-	public ParticleSystem SelectedItemParticles;
-	public GameObject musicItemButton;
-	public Text musicItemText;
-	public GameObject soundEffectsItemButton;
-	public Text soundEffectsItemText;
-	public GameObject creditsItemButton;
-	public Text creditsItemText;
-	public Text gameOverText;
-	public Text enemiesKilledText;
-	public Text waveText;
-	public InventoryLoader inventoryLoader;
-	public EnemyLoader[] enemyLoader;
 
-	GameObject[] items;
-	bool holdingItem;
-	GameObject itemHeld;
-	float timeInteracted;
-	float distance = 1;
-	float smooth = 4;
-	float turnspeed = 1;
-	bool waitingForNextWave = false;
-	float timeToWaitForNextWave = 3f;
-	float timeWon;
+    public ParticleSystem SelectedItemParticles;
+    public GameObject musicItemButton;
+    public Text musicItemText;
+    public GameObject soundEffectsItemButton;
+    public Text soundEffectsItemText;
+    public GameObject creditsItemButton;
+    public Text creditsItemText;
+    public Text gameOverText;
+    public Text enemiesKilledText;
+    public Text waveText;
+    
+    //public InventoryLoader inventoryLoader;
+    //public EnemyLoader[] enemyLoader;
 
-	// Use this for initialization
-	void Start () {
-		items = GameObject.FindGameObjectsWithTag("Item");
-		foreach (EnemyLoader el in enemyLoader) {
-			if (!el.name.Equals("EnemySpawnerN")) {
-				el.gameObject.SetActive(false);
-			}
-		}
-	}
+    GameObject[] items;
+    bool holdingItem;
+    GameObject currentItemHeld;
+    float timeInteracted;
+    float itemHoldDistance = 1.0f;
+    float smooth = 4;
+    bool waitingForNextWave = false;
+    float timeToWaitForNextWave = 3f;
+    float timeWon;
 
-	// Update is called once per frame
-	void Update () {
-		InteractWithPaperMenu();
+    // Use this for initialization
+    void Start () {
+        items = GameObject.FindGameObjectsWithTag("Item");
+    }
 
-		InteractWithItems();
+    public void Interact()
+    {
+        //if ((VRDevice.family != "oculus" && Cardboard.SDK.Triggered) || Input.GetMouseButtonUp(0))
+        
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (!holdingItem && Time.time > timeInteracted + 0.3f)
+            {
+                CheckIngredientHit(hit);                
+            }
 
+            if (holdingItem && Time.time > timeInteracted + 0.3f)
+            {
+                StopHoldingIngredient();
+            }
+        }
+        
+    }
 
-		if (SceneManager.GetActiveScene().name.Equals("Title") && GameManager.gameOver) {
-			//show the game over text when you move to the title screen from game over
-			gameOverText.gameObject.SetActive(true);
-			enemiesKilledText.GetComponent<Text>().text = "Enemies killed:\n" + GameManager.GetEnemiesKilled();
-			enemiesKilledText.gameObject.SetActive(true);
+    private void CheckIngredientHit(RaycastHit hit)
+    {
+        if (hit.collider.gameObject.tag == "Item")
+        {
+            holdingItem = true;
+            currentItemHeld = hit.collider.gameObject;
+            timeInteracted = Time.time;
+        }
 
-			GameManager.PlayRandomWitchDeath();
-			Debug.Log("game over... music muted? " + GameManager.musicMuted + " sfx muted? " + GameManager.soundEffectsMuted); 
-			//also check the fonts for the music and sound effects.. they reset on scene load
-			if (GameManager.musicMuted) {
-				//disable..
-				musicItemText.fontStyle = FontStyle.Italic;
-				musicItemText.color = new Color(28/255f, 28/255f, 28/255f, 90/255f); //1C1C1CFF
-			}
-			if (GameManager.soundEffectsMuted) {
-				soundEffectsItemText.fontStyle = FontStyle.Italic;
-				soundEffectsItemText.color = new Color(28/255f, 28/255f, 28/255f, 90/255f); //1C1C1CFF
-			}
-			GameManager.gameOver = false;
-		}
+    }
 
-		if (SceneManager.GetActiveScene().name.Equals("Main") && GameManager.gameOver) {
-			//you've won..
-			waveText.gameObject.SetActive(true);
-			WaitForNextWave();
-		}
-	}
+    private void StopHoldingIngredient()
+    {
+        holdingItem = false;
+        currentItemHeld.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        // SelectedItemParticles.transform.position = new Vector3(0, -10, 0);
+        currentItemHeld = null;
+        timeInteracted = Time.time;
+    }
 
-	void InteractWithItems() {
-		if (!GameManager.gameOver) {
-			if ((VRDevice.family != "oculus" && Cardboard.SDK.Triggered) || Input.GetMouseButtonUp(0)) {
-				Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-				RaycastHit hit;
-				if (Physics.Raycast(ray, out hit)) {
-					if (!holdingItem && Time.time > timeInteracted + 0.3f) {
+    public void GrabUpdate()
+    {
+        if (holdingItem && currentItemHeld != null)
+        {
+            Vector3 frontOfCamera = Camera.main.transform.position + Camera.main.transform.forward * itemHoldDistance;
+            Vector3 diffVector = frontOfCamera - currentItemHeld.transform.position;
+            float diff = diffVector.magnitude;
+            currentItemHeld.transform.position = Vector3.Lerp(currentItemHeld.transform.position, frontOfCamera, Time.deltaTime * smooth);
+            // SelectedItemParticles.transform.position = itemHeld.transform.position;
+            currentItemHeld.transform.rotation *= Quaternion.Euler(Random.Range(5, 10) * diff * (diffVector.z / Mathf.Abs(diffVector.z)), 0, 0);
+        }
+    }
 
-						foreach (GameObject item in items) {
-							if (hit.collider.gameObject == item) {
-								holdingItem = true;
-								itemHeld = item;
-								timeInteracted = Time.time;
-							}
-						}
-					}
+    private void DisplayGameOver()
+    {
+        //play death sound
+        SoundManager.Instance.PlayRandomWitchDeath();
+        //display canvas
+        //update score and waves complete
 
-					if (holdingItem && Time.time > timeInteracted + 0.3f) {
-						holdingItem = false;
-						itemHeld.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-						// SelectedItemParticles.transform.position = new Vector3(0, -10, 0);
-						itemHeld = null;
-						timeInteracted = Time.time;
-					}
-				}
-			}
+        //TODO check if this needed
+        GameManager.gameOver = false;
 
-			if (holdingItem && itemHeld != null) {
-				Vector3 frontOfCamera = Camera.main.transform.position + Camera.main.transform.forward * distance;
-				Vector3 diffVector = frontOfCamera - itemHeld.transform.position;
-				float diff = diffVector.magnitude;
-				itemHeld.transform.position = Vector3.Lerp(itemHeld.transform.position, frontOfCamera, Time.deltaTime * smooth);
-				// SelectedItemParticles.transform.position = itemHeld.transform.position;
-				itemHeld.transform.rotation *= Quaternion.Euler(Random.Range(5, 10) * diff * (diffVector.z / Mathf.Abs(diffVector.z)), 0, 0);
-			}
-		}
-	}
-
-	void InteractWithPaperMenu() {
-		if (GameObject.Find("PaperMenu") != null && !holdingItem) {
-			gameOverText.gameObject.SetActive(false);
-			enemiesKilledText.gameObject.SetActive(false);
-			if ((VRDevice.family != "oculus" && Cardboard.SDK.Triggered) || Input.GetMouseButtonUp(0)) {
-				Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-				RaycastHit hit;
-				if (Physics.Raycast(ray, out hit)) {
-					if (hit.collider.gameObject == musicItemButton && Time.time > timeInteracted + 0.3f) {
-						timeInteracted = Time.time;
-						Debug.Log("music item!");
-						bool enabled = musicItemText.fontStyle == FontStyle.Normal;
-						if (enabled) {
-							//disable..
-							musicItemText.fontStyle = FontStyle.Italic;
-							musicItemText.color = new Color(28/255f, 28/255f, 28/255f, 90/255f); //1C1C1CFF
-							Debug.Log("disable");
-							GameObject.Find("Room").GetComponent<AudioSource>().mute = true;
-							GameManager.musicMuted = true;
-							//GameManager.musicEnabled(false);
-							//disable music
-						} else {
-							//enable..
-							musicItemText.fontStyle = FontStyle.Normal;
-							musicItemText.color = new Color(28/255f, 28/255f, 28/255f, 1); //1C1C1CFF
-							Debug.Log("enable");
-							GameObject.Find("Room").GetComponent<AudioSource>().mute = false;
-							GameManager.musicMuted = false;
-							//GameManager.musicEnabled(true);
-							//enable music..
-						}
-					} else if (hit.collider.gameObject == soundEffectsItemButton && Time.time > timeInteracted + 0.3f) {
-						timeInteracted = Time.time;
-						Debug.Log("sound effects item!");
-						bool enabled = soundEffectsItemText.fontStyle == FontStyle.Normal;
-						if (enabled) {
-							//disable..
-							soundEffectsItemText.fontStyle = FontStyle.Italic;
-							soundEffectsItemText.color = new Color(28/255f, 28/255f, 28/255f, 90/255f); //1C1C1CFF
-							Debug.Log("disable");
-							//disable sound effects
-							GameManager.soundEffectsMuted = true;
-						} else {
-							//enable..
-							soundEffectsItemText.fontStyle = FontStyle.Normal;
-							soundEffectsItemText.color = new Color(28/255f, 28/255f, 28/255f, 1); //1C1C1CFF
-							Debug.Log("enable");
-							//enable sound effects..
-							GameManager.soundEffectsMuted = false;
-						}
-						//TODO: do something for sound effects..
-					} else if (hit.collider.gameObject == creditsItemButton && Time.time > timeInteracted + 0.3f) {
-						timeInteracted = Time.time;
-						Debug.Log("credits item!");
-						bool enabled = creditsItemText.fontStyle == FontStyle.Normal;
-						if (enabled) {
-							//disable..
-							creditsItemText.fontStyle = FontStyle.Italic;
-							creditsItemText.color = new Color(28/255f, 28/255f, 28/255f, 90/255f); //1C1C1CFF
-							Debug.Log("disable");
-							//disable music
-						} else {
-							//enable..
-							creditsItemText.fontStyle = FontStyle.Normal;
-							creditsItemText.color = new Color(28/255f, 28/255f, 28/255f, 1); //1C1C1CFF
-							Debug.Log("enable");
-							//enable music..
-						}
-						//TODO: do something for credits..
-					}
-				}
-			}
-		}
-
-		if (!GameManager.gameOver) {
-			if ((VRDevice.family != "oculus" && Cardboard.SDK.Triggered) || Input.GetMouseButtonUp(0)) {
-				Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-				RaycastHit hit;
-				if (Physics.Raycast(ray, out hit)) {
-					if (!holdingItem && Time.time > timeInteracted + 0.3f) {
-
-						foreach (GameObject item in items) {
-							if (hit.collider.gameObject == item) {
-								holdingItem = true;
-								itemHeld = item;
-								itemHeld.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-								timeInteracted = Time.time;
-							}
-						}
-					}
-
-					if (holdingItem && Time.time > timeInteracted + 0.3f) {
-						holdingItem = false;
-						itemHeld.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-						// SelectedItemParticles.transform.position = new Vector3(0, -10, 0);
-						itemHeld = null;
-						timeInteracted = Time.time;
-					}
-				}
-			}
-
-			if (holdingItem && itemHeld != null) {
-				Vector3 frontOfCamera = Camera.main.transform.position + Camera.main.transform.forward * distance;
-				Vector3 diffVector = frontOfCamera - itemHeld.transform.position;
-				float diff = diffVector.magnitude;
-				itemHeld.transform.position = Vector3.Lerp(itemHeld.transform.position, frontOfCamera, Time.deltaTime * smooth);
-				// SelectedItemParticles.transform.position = itemHeld.transform.position;
-				itemHeld.transform.rotation *= Quaternion.Euler(Random.Range(5, 10) * diff * (diffVector.z / Mathf.Abs(diffVector.z)), 0, 0);
-			}
-		} /*else if (GameObject.Find("PaperMenu") == null) {// end of gameover
-			gameOverText.gameObject.SetActive(true);
-		}*/
-		/*if (SceneManager.GetActiveScene().name.Equals("Title") && GameManager.gameOver) {
-			gameOverText.gameObject.SetActive(true);
-			GameManager.gameOver = false;
-		}*/
-
-		if (SceneManager.GetActiveScene().name.Equals("Main") && GameManager.gameOver) {
-			//you've won..
-			waveText.gameObject.SetActive(true);
-			WaitForNextWave();
-		}
-	}
-
-	void WaitForNextWave() {
-		if (!waitingForNextWave) {
-			waitingForNextWave = true;
-			timeWon = Time.time;
-		} else {
-			if (Time.time >= timeWon + timeToWaitForNextWave) {
-				Debug.Log("setting up new level..");
-				waitingForNextWave = false;
-				waveText.gameObject.SetActive(false);
-				GameManager.gameOver = false;
-				GameManager.wonLevel = false;
-				GameManager.level++;
-				//inventory loader.
-				inventoryLoader.Spawn();
-				items = GameObject.FindGameObjectsWithTag("Item");
-				foreach (EnemyLoader el in enemyLoader) {
-					if (GameManager.level == 1) {
-						if (el.name.Equals("EnemySpawnerN")) {
-							el.gameObject.SetActive(true);
-						} else {
-							el.gameObject.SetActive(false);
-						}
-					} else {
-						el.gameObject.SetActive(true);
-					}
-					if (el.gameObject.activeSelf) {
-						el.NewGame();
-					}
-				}
-			}
-		}
-	}
+    }
 }

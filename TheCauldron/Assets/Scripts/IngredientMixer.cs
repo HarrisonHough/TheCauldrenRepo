@@ -1,150 +1,192 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using UnityEngine;
 
-public class IngredientMixer : MonoBehaviour
-{
+public class IngredientMixer : MonoBehaviour {
 
-	// Cauldron
-	public GameObject Soup;
-	public Material SoupMaterial;
+    // Cauldron
+    public GameObject Soup;
+    public Material SoupMaterial;
 
-	// Combinable item
-	public GameObject Pig;
-	public GameObject DragonClaw;
-	public GameObject Pizza;
-	public GameObject Potion;
+    // Combinable item
+    public GameObject Pig;
+    public GameObject DragonClaw;
+    public GameObject Pizza;
+    public GameObject Potion;
 
-	// Particle Emitter
-	public ParticleSystem FlashySmoke;
-	public ParticleSystem MagicalSmoke;
+    // Particle Emitter
+    public ParticleSystem FlashySmoke;
+    public ParticleSystem MagicalSmoke;
 
-	private ArrayList ingredients;
-	private ArrayList projectiles;
+    private ArrayList ingredients;
+    private ArrayList projectiles;
 
-	// Use this for initialization
-	void Start()
-	{
-		ingredients = new ArrayList();
-		projectiles = new ArrayList();
-	}
 
-	public void AddIngredient(string ingredient)
-	{
-		if (ingredients == null && projectiles == null) {
-			ingredients = new ArrayList();
-			projectiles = new ArrayList();
-		}
-		ingredients.Add(ingredient);
-		//GetComponent<AudioSource>().Play();
-		GameManager.PlayRandomAddItemSfx();
-		MixIngredient();
-		MagicalSmoke.Play();
-	}
+    // Use this for initialization
+    void Start () {
+        ingredients = new ArrayList();
+        projectiles = new ArrayList();
+    }
 
-	void MixIngredient()
-	{
-		if (ingredients.Contains("Eye") && ingredients.Contains("Potion")) {
-			ingredients.Remove("Eye");
-			ingredients.Remove("Potion");
-			SpawnIngredient(DragonClaw);
-			SpawnIngredient(DragonClaw);
-			SpawnIngredient(DragonClaw);
-			SpawnIngredient(DragonClaw);
-			SpawnIngredient(DragonClaw);
-			FlashySmoke.Play();
-		} else if (ingredients.Contains("Potion")) {
-			ingredients.Remove("Potion");
-			SpawnIngredient(Potion);
-			FlashySmoke.Play();
-		} else if (ingredients.Contains("Ham") && ingredients.Contains("Cheese")) {
-			ingredients.Remove("Ham");
-			ingredients.Remove("Cheese");
-			SpawnIngredient(Pig);
-			SpawnIngredient(Pig);
-			SpawnIngredient(Pig);
-			FlashySmoke.Play();
-		} else if (ingredients.Contains("Pizza")) {
-			ingredients.Remove("Pizza");
-			SpawnIngredient(Pizza);
-			SpawnIngredient(Pizza);
-			SpawnIngredient(Pizza);
-			FlashySmoke.Play();
-		} else if (ingredients.Contains("DragonClaw")) {
-			ingredients.Remove("DragonClaw");
-			SpawnIngredient(DragonClaw);
-			SpawnIngredient(DragonClaw);
-			FlashySmoke.Play();
-		} else if (ingredients.Contains("Pig")) {
-			ingredients.Remove("Pig");
-			SpawnIngredient(Pig);
-			FlashySmoke.Play();
-		}
-	}
+    public void AddIngredient(IngredientType ingredient)
+    {
+        if (ingredients == null && projectiles == null)
+        {
+            ingredients = new ArrayList();
+            projectiles = new ArrayList();
+        }
+        ingredients.Add(ingredient);
+        //GetComponent<AudioSource>().Play();
+        SoundManager.Instance.PlayRandomAddItem();
+        MixIngredient();
+        MagicalSmoke.Play();
+    }
 
-	void SpawnIngredient(GameObject ingredient)
-	{
-		GameObject Projectile = (GameObject)Instantiate(ingredient, transform.position + new Vector3(0, 1, 0), transform.rotation * Quaternion.Euler(Random.Range(-10, 10), 0, 0));
-		Rigidbody rb = Projectile.GetComponent<Rigidbody>();
-		rb.isKinematic = false;
-		projectiles.Add(Projectile);
-	}
+    public void AddIngredient(string ingredient)
+    {
+        if (ingredients == null && projectiles == null)
+        {
+            ingredients = new ArrayList();
+            projectiles = new ArrayList();
+        }
+        ingredients.Add(ingredient);
+        //GetComponent<AudioSource>().Play();
+        SoundManager.Instance.PlayRandomAddItem();
+        MixIngredient();
+        MagicalSmoke.Play();
+    }
 
-	GameObject[] GetClosestEnemies(int numberOfEnemies)
-	{
-		List<GameObject> allEnemies = GameObject.FindGameObjectsWithTag("Enemy").ToList();
-		Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+    void MixIngredient()
+    {
+        if (ingredients.Contains(IngredientType.Eye) && ingredients.Contains(IngredientType.Potion))
+        {
+            ingredients.Remove(IngredientType.Eye);
+            ingredients.Remove(IngredientType.Potion);
+            SpawnIngredient(DragonClaw);
+            SpawnIngredient(DragonClaw);
+            SpawnIngredient(DragonClaw);
+            SpawnIngredient(DragonClaw);
+            SpawnIngredient(DragonClaw);
+            FlashySmoke.Play();
+        }
+        else if (ingredients.Contains(IngredientType.Potion))
+        {
+            ingredients.Remove(IngredientType.Potion);
+            SpawnIngredient(Potion);
+            FlashySmoke.Play();
+        }
+        else if (ingredients.Contains(IngredientType.Ham) && ingredients.Contains(IngredientType.Cheese))
+        {
+            ingredients.Remove(IngredientType.Ham);
+            ingredients.Remove(IngredientType.Cheese);
+            SpawnIngredient(Pig);
+            SpawnIngredient(Pig);
+            SpawnIngredient(Pig);
+            FlashySmoke.Play();
+        }
+        else if (ingredients.Contains(IngredientType.Pizza))
+        {
+            ingredients.Remove(IngredientType.Pizza);
+            SpawnIngredient(Pizza);
+            SpawnIngredient(Pizza);
+            SpawnIngredient(Pizza);
+            FlashySmoke.Play();
+        }
+        else if (ingredients.Contains(IngredientType.DragonClaw))
+        {
+            ingredients.Remove(IngredientType.DragonClaw);
+            SpawnIngredient(DragonClaw);
+            SpawnIngredient(DragonClaw);
+            FlashySmoke.Play();
+        }
+        else if (ingredients.Contains(IngredientType.Pig))
+        {
+            ingredients.Remove(IngredientType.Pig);
+            SpawnIngredient(Pig);
+            FlashySmoke.Play();
+        }
+        else
+        {
 
-		int min = Mathf.Min(allEnemies.Count, numberOfEnemies);
-		GameObject[] closestXEnemies = new GameObject[min];
+        }
+    }
 
-		for (int i = 0; i < min; i++) {
-			foreach (GameObject enemy in allEnemies) {
-				if (closestXEnemies[i] == null) {
-					closestXEnemies[i] = enemy;
-				} else {
-					if (Vector3.Distance(enemy.transform.position, playerPos) < Vector3.Distance(closestXEnemies[i].transform.position, playerPos)) {
-						closestXEnemies[i] = enemy;
-					}
-				}
-			}
-			allEnemies.Remove(closestXEnemies[i]);
-		}
+    void MixIngredientOLD()
+    {
+        if (ingredients.Contains("Eye") && ingredients.Contains("Potion"))
+        {
+            ingredients.Remove("Eye");
+            ingredients.Remove("Potion");
+            SpawnIngredient(DragonClaw);
+            SpawnIngredient(DragonClaw);
+            SpawnIngredient(DragonClaw);
+            SpawnIngredient(DragonClaw);
+            SpawnIngredient(DragonClaw);
+            FlashySmoke.Play();
+        }
+        else if (ingredients.Contains("Potion"))
+        {
+            ingredients.Remove("Potion");
+            SpawnIngredient(Potion);
+            FlashySmoke.Play();
+        }
+        else if (ingredients.Contains("Ham") && ingredients.Contains("Cheese"))
+        {
+            ingredients.Remove("Ham");
+            ingredients.Remove("Cheese");
+            SpawnIngredient(Pig);
+            SpawnIngredient(Pig);
+            SpawnIngredient(Pig);
+            FlashySmoke.Play();
+        }
+        else if (ingredients.Contains("Pizza"))
+        {
+            ingredients.Remove("Pizza");
+            SpawnIngredient(Pizza);
+            SpawnIngredient(Pizza);
+            SpawnIngredient(Pizza);
+            FlashySmoke.Play();
+        }
+        else if (ingredients.Contains("DragonClaw"))
+        {
+            ingredients.Remove("DragonClaw");
+            SpawnIngredient(DragonClaw);
+            SpawnIngredient(DragonClaw);
+            FlashySmoke.Play();
+        }
+        else if (ingredients.Contains("Pig"))
+        {
+            ingredients.Remove("Pig");
+            SpawnIngredient(Pig);
+            FlashySmoke.Play();
+        }
+    }
 
-		return closestXEnemies;
-	}
+    void SpawnIngredient(GameObject ingredient)
+    {
+        GameObject Projectile = (GameObject)Instantiate(ingredient, transform.position + new Vector3(0, 1, 0), transform.rotation * Quaternion.Euler(Random.Range(-10, 10), 0, 0));
+        Rigidbody rb = Projectile.GetComponent<Rigidbody>();
+        rb.isKinematic = false;
+        projectiles.Add(Projectile);
+        ShootProjectiles();
+    }
 
-	GameObject GetClosestEnemy()
-	{
-		GameObject[] go = GameObject.FindGameObjectsWithTag("Enemy");
+    public void ShootProjectiles()
+    {
+        for (int i = 0; i < projectiles.Count; i++)
+        {
+            Vector3 targetPos;
+            if (GameManager.Instance.EnemyManager.ClosestEnemy != null)
+            {
+                targetPos = GameManager.Instance.EnemyManager.ClosestEnemy.transform.position;
+            }
+            else
+            {
+                targetPos = transform.position;
+            }
+            ((GameObject)projectiles[i]).GetComponent<Ingredient>().FlyTo(targetPos + new Vector3(0, 3, 0));
+        }
 
-		if (go.Length > 0) {
-			return GetClosestEnemies(1)[0];
-		}
-		return null;
-	}
-
-	// Update is called once per frame
-	void Update()
-	{
-		GameObject[] enemies = GetClosestEnemies(projectiles.Count);
-
-		for (int i = 0; i < projectiles.Count; i++) {
-			Vector3 targetPos;
-			if (i < enemies.Length) {
-				targetPos = enemies[i].transform.position;
-			} else {
-				targetPos = transform.position;
-			}
-			((GameObject)projectiles[i]).GetComponent<Ingredient>().FlyTo(targetPos + new Vector3(0, 3, 0));
-		}
-
-		projectiles.Clear();
-	}
-
-	public GameObject[] GetAllEnemies()
-	{
-		return GameObject.FindGameObjectsWithTag("Enemy");
-	}
+        projectiles.Clear();
+    }
 }

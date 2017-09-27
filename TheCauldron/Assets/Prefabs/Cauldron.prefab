@@ -5,14 +5,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 441866}
-  - 33: {fileID: 3348612}
-  - 23: {fileID: 2354334}
-  - 95: {fileID: 9588150}
-  - 64: {fileID: 6442832}
-  - 114: {fileID: 11425014}
+  - component: {fileID: 441866}
+  - component: {fileID: 3348612}
+  - component: {fileID: 2354334}
+  - component: {fileID: 6442832}
+  - component: {fileID: 11425014}
   m_Layer: 0
   m_Name: Cauldron
   m_TagString: Untagged
@@ -32,6 +31,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &2354334
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -41,22 +41,28 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 78db9af931bfb49478378e116814d3d7, type: 2}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
   m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &3348612
 MeshFilter:
@@ -76,24 +82,9 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: f00ecb7b2048d7140afd36df37906c12, type: 3}
---- !u!95 &9588150
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 180828}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: f00ecb7b2048d7140afd36df37906c12, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11425014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,17 +93,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 180828}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae3044014f8524ba5874a2e3c661c82d, type: 3}
+  m_Script: {fileID: 11500000, guid: f076577038d415e47be3209be5e25d12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Soup: {fileID: 0}
-  SoupMaterial: {fileID: 0}
-  Pig: {fileID: 144804, guid: 22f3ac86210a443e9b92b5fb217193e5, type: 2}
-  DragonClaw: {fileID: 0}
-  Pizza: {fileID: 0}
-  Potion: {fileID: 0}
-  FlashySmoke: {fileID: 0}
-  MagicalSmoke: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

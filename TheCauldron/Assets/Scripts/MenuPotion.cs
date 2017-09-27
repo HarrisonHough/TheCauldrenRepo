@@ -1,25 +1,38 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
 
 public class MenuPotion : MonoBehaviour {
 
-	public string menuString;
+    public enum MenuOption {Play, Settings }
+    public MenuOption menuOption;
 
-	private GameObject cauldron;
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Cauldron")
+        {
+            MenuFunction();
+            //hide object
+            gameObject.SetActive(false);
+        }
+    }
 
-	// Use this for initialization
-	void Start () {
-		cauldron = GameObject.Find("Cauldron");
-	}
+    
+    private void MenuFunction()
+    {
+        // TODO add menu functions
+        switch (menuOption)
+        {
+            case MenuOption.Play:
+                // Load game level
+                break;
+            case MenuOption.Settings:
+                // SHow Menu
+                break;
+            default:
+                break;
 
-	void OnTriggerEnter(Collider other) {
-		Debug.Log("removing from: " + menuString);
-		cauldron.GetComponent<Menu>().CallMenuItem(menuString);
-		Destroy(gameObject);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+        }
+    }
 }
